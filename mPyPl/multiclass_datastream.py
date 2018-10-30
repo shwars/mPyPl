@@ -101,6 +101,7 @@ def get_datastream(data_dir, ext, classes, split_filename=None):
     """
     Get a stream of objects for a number of classes specified as dict of the form { 'dir0' : 0, 'dir1' : 1, ... }
     Returns stream of dictionaries of the form { class_id: ... , class_name: ..., filename: ... }
+    `classes` is the dictionary of the form { 'class_name' : class_id, ... }
     """
     stream = list(classes.items()) \
             | select(lambda kv: get_filestream(os.path.join(data_dir,kv[0]),ext)\
@@ -110,6 +111,52 @@ def get_datastream(data_dir, ext, classes, split_filename=None):
         return stream | datasplit(os.path.join(data_dir,split_filename))
     else:
         return stream
+
+@Pipe
+def sample_classes(datastream,class_field_name,n=10,classes=None):
+    """
+    Create a datastream containing at most `n` samples from each of the classes defined by `class_field_name`
+    **Important** If `classes` is `None`, function determines classes on the fly, in which case it is possible that it will terminate early without
+    giving elements of all classes.
+    :param datastream: input stream
+    :param class_field_name: name of the field in the stream speficying the class
+    :param n: number of elements of each class to take
+    :param classes: classes descriptor, either dictionary or list
+    :return: resulting stream
+    """
+    if classes is not None:
+        if isinstance(classes,dict):
+            classes = classes.keys()
+        dic = { x : n for x in classes }
+    else:
+        dic = {}
+    for x in datastream:
+        v = x[class_field_name]
+        if v in dic.keys():
+            if dic[v]>0:
+                dic[v] -= 1
+                yield x
+        else:
+            dic[v] = n-1
+            yield x
+        if sum(dic.values())==0:
+            return
+
+@Pipe
+def count_classes(datastream,class_field_name):
+    """
+    Count number of elements in difference classes.
+    :param datastream: input data stream
+    :param class_field_name: name of the field to be used for counting
+    :return: mdict with classes and their values
+    """
+    m = mdict()
+    for x in datastream:
+        if x[class_field_name] in m.keys():
+            m[x[class_field_name]] += 1
+        else:
+            m[x[class_field_name]] = 1
+    return m
 
 @Pipe
 def filter_split(datastream,split_type):

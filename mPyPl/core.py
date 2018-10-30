@@ -1,7 +1,6 @@
 # mPyPl - Monadic Pipeline Library for Python
 # http://github.com/shwars/mPyPl
 
-from typing import TypeVar, Iterable, Tuple, Union
 import os
 from .mdict import *
 from pipe import *
