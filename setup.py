@@ -9,6 +9,7 @@ setuptools.setup(
     name='mPyPl',
     packages=setuptools.find_packages(),
     version='0.0.1',
+    install_requires=['pipe>=1.5.0','numpy>=1.11'],
     description='Monadic Pipeline Library for Python',
     author='Dmitri Soshnikov',
     author_email='dmitri@soshnikov.com',
