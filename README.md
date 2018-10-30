@@ -13,3 +13,11 @@ by the following main ideas:
    new fields by using `apply` function. Those dictionaries are similar to *monads*, and `apply` is similar to *lift* operation
    on monads. Thus the naming of the library.
    
+## Credits
+
+Principal developers of mPyPl:
+
+ * [Dmitri Soshnikov](https://github.com/shwars)
+ * [Yana Valieva](https://github.com/vJenny)
+ * [Tim Scarfe](https://github.com/ecsplendid)
+ 
