@@ -1,7 +1,7 @@
 from pipe import *
 import random, itertools
 import numpy as np
-
+import pickle
 
 # trs note -- pass l in as
 # a fixed data structure i.e. array/list because (len(l)) must work
@@ -62,6 +62,37 @@ def pprint(l):
     print(l)
     return l
 
+@Pipe
+def pconcat(l):
+    for x in l:
+        for y in x:
+            yield y
+
+@Pipe
+def puniq(l):
+    u = []
+    for x in l:
+        if x not in u:
+            u.append(x)
+    return u
+
+@Pipe
+def pbatch(l,n=10):
+    """
+    Split input sequence into batches of `n` elements.
+    :param l: Input sequence
+    :param n: Length of output batches (lists)
+    :return: Sequence of lists of `n` elements
+    """
+    b = []
+    for x in l:
+        if len(b)<n:
+            b.append(x)
+        else:
+            yield b
+            b=[]
+    if len(b)>0:
+        yield b
 
 @Pipe
 def first(l):
@@ -72,3 +103,24 @@ def first(l):
     """
     for x in l:
         return x
+
+@Pipe
+def psave(datastream,filename):
+    """
+    Save whole datastream into a file for later use
+    :param datastream: Datastream
+    :param filename: Filename
+    """
+    datastream = list(datastream)
+    with open(filename, 'wb') as output:
+        pickle.dump(datastream, output, pickle.HIGHEST_PROTOCOL)
+
+def pload(filename):
+    """
+    Load a datastream (list) from file and use it as a pipe
+    :param filename: filename to use
+    :return: datastream (list)
+    """
+    with open(filename, 'rb') as input:
+        ls = pickle.load(input)
+    return ls

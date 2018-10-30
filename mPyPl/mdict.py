@@ -44,3 +44,9 @@ class mdict(dict):
 
     def get(self, item, default=None):
         return dict.__getitem__(self,item,default)
+
+    def as_float(self,item):
+        return float(self[item])
+
+    def as_int(self,item):
+        return int(self[item])

@@ -109,7 +109,7 @@ def select_field(datastream,field_name):
     Extract one/several fields from datastream, returning a stream of objects of corresponding type (not `mdict`).
     If several fields are given, return a list/tuple.
     """
-    return datastream | select(functools.partial(__fnapply, field_name=field_name, func=lambda x: x))
+    return datastream | select(functools.partial(__fnapply, src_field=field_name, func=lambda x: x))
 
 @Pipe
 def select_fields(datastream,field_names):
