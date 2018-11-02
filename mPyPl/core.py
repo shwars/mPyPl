@@ -85,6 +85,24 @@ def apply_npy(datastream,src_field, dst_field, func, file_ext=None):
         file_ext = dst_field + ".npy"
     return datastream | fapply(dst_field, functools.partial(applier,file_ext=file_ext))
 
+
+# ==== Filter =====
+
+@Pipe
+def filter(datastream, src_field, pred):
+    """
+    Filters out fields that yield a given criteria.
+    :param datastream: input datastream
+    :param src_field: field of list of fields to consider
+    :param pred: predicate function. If `src_field` is one field, than `pred` is a function of one argument returning boolean.
+    If `src_field` is a list, `pred` takes tuple/list as an argument.
+    :return: datastream with fields that yield predicate
+    """
+    def filtr(x):
+        return __fnapply(x,src_field,pred)
+    return datastream | where(filtr)
+
+
 # === Field manipulations ===
 
 @Pipe
@@ -102,6 +120,16 @@ def as_field(datastream,field_name):
     Convert stream of any objects into proper datastream of `mdict`'s, with one named field
     """
     return datastream | select( lambda x : mdict( { field_name : x}))
+
+@Pipe
+def ensure_field(datastream,field_name):
+    """
+    Ensure that the field with the given name exists. All records non containing that field are skipped.
+    :param datastream: input datastream
+    :param field_name: field name
+    :return: output datastream
+    """
+    return datastream | where(lambda x: field_name in x.keys())
 
 @Pipe
 def select_field(datastream,field_name):

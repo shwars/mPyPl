@@ -37,7 +37,7 @@ def populate_mdict_from_xml(xml,m, prefix='',list_fields=[],flatten_fields=[],sk
                 populate_mdict_from_xml(x,m1,'',list_fields,flatten_fields)
                 addf(m,x.tag,m1)
 
-def get_xmlstream_from_dir(dir,list_fields=[],flatten_fields=[],skip_fields=[]):
+def get_xmlstream_from_dir(dir,list_fields=[],flatten_fields=[],skip_fields=[],populate_aux_fields=False):
     """
     Returns the stream of XML objects retrieved from files in the given directory. This can be used, for example, for
     reading Pascal VOC annotations.
@@ -50,5 +50,8 @@ def get_xmlstream_from_dir(dir,list_fields=[],flatten_fields=[],skip_fields=[]):
     for f in os.listdir(dir):
         doc = et.parse(os.path.join(dir,f))
         m = mdict()
+        if populate_aux_fields:
+            m['__original_filename__'] = f
+            m['__original_filepath__'] = os.path.join(dir,f)
         populate_mdict_from_xml(doc.getroot(),m,'',list_fields,flatten_fields)
         yield m

@@ -9,3 +9,4 @@ from .keras import *
 from .multiclass_datastream import *
 from .xmlstream import *
 from .utils.pipeutils import *
+from .utils.coreutils import *

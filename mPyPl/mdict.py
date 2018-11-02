@@ -2,6 +2,7 @@
 # http://github.com/shwars/mPyPl
 
 import enum
+from .utils.coreutils import getattritem
 
 """
 Different evaluation strategies that can be used for `mdict` slots:
@@ -37,10 +38,12 @@ class mdict(dict):
     def __getitem__(self, item):
         res = dict.__getitem__(self,item)
         if callable(res) and self.eval_strategies.get(item,EvalStrategies.Default) != EvalStrategies.Value:
-            res = res.__call__()
+            r = res.__call__()
             if self.eval_strategies.get(item,EvalStrategies.LazyMemoized) == EvalStrategies.LazyMemoized:
-                res[item] = res
-        return res
+                self[item] = r
+            return r
+        else:
+            return res
 
     def get(self, item, default=None):
         return dict.__getitem__(self,item,default)
@@ -50,3 +53,16 @@ class mdict(dict):
 
     def as_int(self,item):
         return int(self[item])
+
+    @staticmethod
+    def extract_from_object(x,fields):
+        """
+        Create new `mdict`, extracting specified fields from a given object or dictionary
+        :param x: Object to use
+        :param fields: List of fields to extract. If a field contains `.`, complex extraction is performed.
+        :return: new `mdict` containing all specified fields
+        """
+        m = mdict()
+        for z in fields:
+            m[z] = getattritem(x,z)
+        return m
