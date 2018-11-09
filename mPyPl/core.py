@@ -112,7 +112,17 @@ def delfield(datastream,field_name):
     """
     for x in datastream:
         del x[field_name]
-        yield x
+        yield x       
+        
+@Pipe
+def delfields(datastream,*fields_names):
+    """
+    Delete specified fields from the stream. This is typically done in order to save memory.
+    """
+    for x in datastream:
+        for field_name in fields_names:
+            del x[field_name]
+        yield x       
 
 @Pipe
 def as_field(datastream,field_name):
