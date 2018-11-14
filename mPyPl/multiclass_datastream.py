@@ -104,7 +104,7 @@ def get_datastream(data_dir, ext, classes, split_filename=None):
     `classes` is the dictionary of the form { 'class_name' : class_id, ... }
     """
     stream = list(classes.items()) \
-            | select(lambda kv: get_filestream(os.path.join(data_dir,kv[0]),ext)\
+            | select(lambda kv: get_files(os.path.join(data_dir,kv[0]),ext)\
             | select(lambda x: mdict({ "filename": x, "class_id": kv[1], "class_name": kv[0] }))) \
             | chain
     if split_filename:

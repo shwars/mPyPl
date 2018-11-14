@@ -110,9 +110,16 @@ def delfield(datastream,field_name):
     """
     Delete specified field `field_name` from the stream. This is typically done in order to save memory.
     """
-    for x in datastream:
-        del x[field_name]
-        yield x
+    if isinstance(field_name, list) or isinstance(field_name, np.ndarray):
+        for x in datastream:
+            for key in field_name:
+                del x[key]
+            yield x  
+    else:
+        for x in datastream:
+            del x[field_name]
+            yield x       
+     
 
 @Pipe
 def as_field(datastream,field_name):
@@ -179,4 +186,3 @@ def iter(datastream,field_name=None, func=None):
             else:
                 __fnapply(x,field_name,func)
         yield x
-

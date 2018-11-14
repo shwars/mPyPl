@@ -2,6 +2,8 @@
 # http://github.com/shwars/mPyPl
 
 import os
+from pipe import *
+import functools 
 
 def readlines(fn):
     """
