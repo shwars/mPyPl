@@ -2,6 +2,7 @@
 # http://github.com/shwars/mPyPl
 
 from pipe import Pipe
+import numpy as np
 
 @Pipe
 def as_batch(flow, feature_field_name='features', label_field_name='label', batchsize=16):
