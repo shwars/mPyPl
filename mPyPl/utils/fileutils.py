@@ -64,11 +64,14 @@ def write_dict_text(fn,dict):
 
 # Directory manipulations
 
-def get_files(data_dir, ext):
+def get_files(data_dir, ext=None):
     """
     Get a list of files from the given directory with specified extension
     """
-    return os.listdir(data_dir) \
-        | where(lambda p: p.endswith(ext)) \
-        | select( lambda p: os.path.join(data_dir,p))
-
+    if ext is not None:
+        return os.listdir(data_dir) \
+            | where(lambda p: p.endswith(ext)) \
+            | select( lambda p: os.path.join(data_dir,p))
+    else:
+        return os.listdir(data_dir) \
+            | select( lambda p: os.path.join(data_dir,p))

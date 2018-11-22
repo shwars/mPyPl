@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import setuptools
+import mPyPl
 
 with open('README.md') as readme_file:
     readme = readme_file.read()
@@ -8,7 +9,7 @@ with open('README.md') as readme_file:
 setuptools.setup(
     name='mPyPl',
     packages=setuptools.find_packages(),
-    version='0.0.2',
+    version=mPyPl.__version__,
     install_requires=['pipe>=1.5.0','numpy>=1.11'],
     description='Monadic Pipeline Library for Python',
     author='Dmitri Soshnikov',

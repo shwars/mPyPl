@@ -1,5 +1,6 @@
 # Video processing functions
 from .utils.video import *
+from .utils.image import im_resize
 from pipe import Pipe
 
 
@@ -33,7 +34,7 @@ def videosource(fname,video_size=(100,100),mode='rgb'):
     if not success:
         raise ValueError('Could not read the video file!')
     while success:
-        im=resize_frame((image[..., ::-1] if mode == 'rgb' else image),video_size)
+        im=im_resize((image[..., ::-1] if mode == 'rgb' else image),video_size)
         yield im
         success, image = vidcap.read()
 
@@ -55,7 +56,7 @@ def videosource_chunked(fname,frames_per_chunk=25,video_size=(100,100),mode='rgb
     if not success:
         raise ValueError('Could not read the video file!')
     while success:
-        im=resize_frame((image[..., ::-1] if mode == 'rgb' else image),video_size)
+        im=im_resize((image[..., ::-1] if mode == 'rgb' else image),video_size)
         chunk[i] = im
         i+=1
         if i==frames_per_chunk:

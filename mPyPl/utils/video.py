@@ -86,12 +86,3 @@ def naive_stabilization(f):
 
 def flow_to_polar(f):
     return cv2.cartToPolar(f[..., 0], f[..., 1])
-
-def resize_frame(frame,size):
-    width,height = size
-    if width or height:
-        width = width if width else int(height / frames[0].shape[0] * frames[0].shape[1])
-        height = height if height else int(width / frames[0].shape[1] * frames[0].shape[0])
-        return cv2.resize(frame, (width, height))
-    else:
-        return frame

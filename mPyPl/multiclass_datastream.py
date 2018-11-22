@@ -97,12 +97,22 @@ def make_split(datastream,split_value=0.2):
     return dict
 
 
-def get_datastream(data_dir, ext, classes, split_filename=None):
+def get_classes(data_dir):
+    """
+    Automatically generate class description dictionary to be used in get_datastream. It assumes standard directory structure.
+    :param data_dir: Base data directory
+    :return: Dictionary of the form { 'dir0' : 0, 'dir1' : 1, ... }
+    """
+    return { d:n for n,d in enumerate(os.listdir(data_dir))}
+
+def get_datastream(data_dir, ext=None, classes=None, split_filename=None):
     """
     Get a stream of objects for a number of classes specified as dict of the form { 'dir0' : 0, 'dir1' : 1, ... }
     Returns stream of dictionaries of the form { class_id: ... , class_name: ..., filename: ... }
     `classes` is the dictionary of the form { 'class_name' : class_id, ... }
     """
+    if classes is None:
+        classes = get_classes(data_dir)
     stream = list(classes.items()) \
             | select(lambda kv: get_files(os.path.join(data_dir,kv[0]),ext)\
             | select(lambda x: mdict({ "filename": x, "class_id": kv[1], "class_name": kv[0] }))) \

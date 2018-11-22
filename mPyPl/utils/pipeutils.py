@@ -42,6 +42,15 @@ def infshuffle(l):
             yield x
 
 @Pipe
+def pexec(l,func):
+    """
+    Execute function func, passing the pipe sequence as an argument
+    :param func: Function to execute, must accept 1 iterator parameter
+    :return: result of func
+    """
+    return func(l)
+
+@Pipe
 def as_npy(l):
     """
     Convert the sequence into numpy array. Use as `seq | as_npy`
