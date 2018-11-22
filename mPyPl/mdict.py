@@ -12,6 +12,13 @@ Different evaluation strategies that can be used for `mdict` slots:
 """
 EvalStrategies = enum.Enum('EvalStrategies','Default Value LazyMemoized OnDemand')
 
+def lazy_strategy(eval_strategy):
+    """
+    Determines if a given eval strategy is lazy (`LazyMemoized` or `OnDemand`)
+    :param eval_strategy: input evaluation strategy
+    :return: True, if eval_strategy is lazy
+    """
+    return eval_strategy==EvalStrategies.LazyMemoized or eval_strategy==EvalStrategies.OnDemand
 
 class mdict(dict):
     """

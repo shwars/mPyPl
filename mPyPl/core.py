@@ -25,25 +25,42 @@ def __fnapply(x,src_field,func):
 
 
 @Pipe
-def apply(datastream, src_field, dst_field, func):
+def apply(datastream, src_field, dst_field, func,eval_strategy=None):
     """
     Applies a function to the specified field of the stream and stores the result in the specified field. Sample usage:
     `[1,2,3] | as_field('f1') | apply('f1','f2',lambda x: x*x) | select_field('f2') | as_list`
     """
     def applier(x):
-        x[dst_field] = __fnapply(x,src_field,func)
+        x[dst_field] =  (lambda : __fnapply(x,src_field,func)) if lazy_strategy(eval_strategy) else __fnapply(x,src_field,func)
+        if eval_strategy:
+            x.set_eval_strategy(dst_field,eval_strategy)
         return x
     return datastream | select(applier)
 
 @Pipe
-def fapply(datastream, dst_field, func):
+def sapply(datastream, field, func):
+    """
+    Self-apply
+    Applies a function to the specified field of the stream and stores the result in the same field. Sample usage:
+    `[1,2,3] | as_field('x') | sapply('x',lambda x: x*x) | select_field('x') | as_list`
+    """
+    def applier(x):
+        x[field] = func(x[field])
+        return x
+    return datastream | select(applier)
+
+
+@Pipe
+def fapply(datastream, dst_field, func, eval_strategy=None):
     """
     Applies a function to the whole dictionary and stores the result in the specified field.
     This function should rarely be used externaly, choice should be made in favour of `apply`, because it does not involve
     operating on internals of `dict`
     """
     def applier(x):
-        x[dst_field] = func(x)
+        x[dst_field] = (lambda : func(x)) if lazy_strategy(eval_strategy) else func(x)
+        if eval_strategy:
+            x.set_eval_strategy(dst_field,eval_strategy)
         return x
     return datastream | select(applier)
 
