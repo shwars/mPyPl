@@ -7,7 +7,12 @@ import matplotlib.pyplot as plt
 
 # taken from https://stackoverflow.com/questions/44720580/resize-image-canvas-to-maintain-square-aspect-ratio-in-python-opencv
 def im_resize_pad(img, size, pad_color=0):
-
+    """
+    Resize an image with padding
+    :param img: Original image
+    :param size: Size in the form (Width,Height). Both should be present
+    :return: Resized image
+    """
     h, w = img.shape[:2]
     sh, sw = size
 
@@ -48,6 +53,13 @@ def im_resize_pad(img, size, pad_color=0):
     return scaled_img
 
 def im_resize(frame,size):
+    """
+    Resize an image, calculating one of the dimensions if needed
+    :param frame: Original image
+    :param size: Size in the form (Width,Height). If one of the parameters is None, it is calculated. If both are present,
+    image is stretched.
+    :return: Resized image
+    """
     width,height=size
     if width or height:
         width = width if width else int(height / frame.shape[0] * frame.shape[1])
@@ -57,6 +69,12 @@ def im_resize(frame,size):
         return frame
 
 def show_images(images, cols = 1, titles = None):
+    """
+    Show a list of images using matplotlib
+    :param images: list of images (or any sequence with len and indexing defined)
+    :param cols: number of columns to use
+    :param titles: list of titles to use or None
+    """
     assert((titles is None)or (len(images) == len(titles)))
     if not isinstance(images,list):
         images = list(images)
@@ -73,3 +91,16 @@ def show_images(images, cols = 1, titles = None):
     fig.set_size_inches(np.array(fig.get_size_inches()) * n_images)
     plt.tight_layout()
     plt.show()
+
+# Taken from https://stackoverflow.com/questions/31400769/bounding-box-of-numpy-array
+def calc_bounding_box(img):
+    """
+    Calculate bounding box of an image or mask. Bounding box surrounds non-zero pictures
+    :param img: Original image
+    :return: Bounding box in a form (x1,y1,x2,y2)
+    """
+    rows = np.any(img, axis=1)
+    cols = np.any(img, axis=0)
+    rmin, rmax = np.where(rows)[0][[0, -1]]
+    cmin, cmax = np.where(cols)[0][[0, -1]]
+    return rmin, cmin, rmax, cmax

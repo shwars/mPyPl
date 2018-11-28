@@ -61,6 +61,13 @@ class mdict(dict):
     def as_int(self,item):
         return int(self[item])
 
+    def as_csv(self):
+        return ','.join(map(encode_csv,self.values()))
+
+    def as_csv_header(self):
+        return ','.join(map(encode_csv,self.keys()))
+
+
     @staticmethod
     def extract_from_object(x,fields):
         """
