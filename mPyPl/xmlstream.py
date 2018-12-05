@@ -37,7 +37,7 @@ def populate_mdict_from_xml(xml,m, prefix='',list_fields=[],flatten_fields=[],sk
                 populate_mdict_from_xml(x,m1,'',list_fields,flatten_fields)
                 addf(m,x.tag,m1)
 
-def get_xmlstream_from_dir(dir,list_fields=[],flatten_fields=[],skip_fields=[],populate_aux_fields=False):
+def get_xmlstream_from_dir(dir,ext='.xml',list_fields=[],flatten_fields=[],skip_fields=[],populate_aux_fields=False):
     """
     Returns the stream of XML objects retrieved from files in the given directory. This can be used, for example, for
     reading Pascal VOC annotations.
@@ -48,6 +48,8 @@ def get_xmlstream_from_dir(dir,list_fields=[],flatten_fields=[],skip_fields=[],p
     :return: A stream of `mdict`s with fields corresponding to XML elements
     """
     for f in os.listdir(dir):
+        if ext is not None and not f.endswith(ext):
+            continue
         doc = et.parse(os.path.join(dir,f))
         m = mdict()
         if populate_aux_fields:
@@ -55,3 +57,13 @@ def get_xmlstream_from_dir(dir,list_fields=[],flatten_fields=[],skip_fields=[],p
             m['__original_filepath__'] = os.path.join(dir,f)
         populate_mdict_from_xml(doc.getroot(),m,'',list_fields,flatten_fields)
         yield m
+
+def get_pascal_annotations(dir='Annotations',ext='.xml',skip_fields=[]):
+    """
+    Return stream of bounding box annotations from Pascal VOC annotation directory
+    :param dir: Directory where XML files with annotations are, defaults to 'Annotations'
+    :param ext: Extension, defaults to '.xml'
+    :param skip_fields: Fields to skip
+    :return: Datastream
+    """
+    return get_xmlstream_from_dir(dir,list_fields=['object'],flatten_fields=['bndbox','size'],skip_fields=skip_fields+['pose','source','path'])
