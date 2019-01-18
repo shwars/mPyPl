@@ -12,6 +12,10 @@ by the following main ideas:
  * Data pipeline uses dictionaries with different fields as base type, new operations would typically enrich data and add 
    new fields by using `apply` function. Those dictionaries are similar to *monads*, and `apply` is similar to *lift* operation
    on monads. Thus the naming of the library.
+
+## Tutorial
+
+You can [watch intro video](https://www.youtube.com/watch?v=EI1ZYZPcQyI), or read project wiki.
    
 ## Credits
 
