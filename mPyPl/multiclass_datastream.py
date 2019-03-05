@@ -97,13 +97,13 @@ def make_split(datastream,split_value=0.2):
     return dict
 
 
-def get_classes(data_dir):
+def get_classes(data_dir,include_hidden=False):
     """
     Automatically generate class description dictionary to be used in get_datastream. It assumes standard directory structure.
     :param data_dir: Base data directory
     :return: Dictionary of the form { 'dir0' : 0, 'dir1' : 1, ... }
     """
-    return { d:n for n,d in enumerate(os.listdir(data_dir))}
+    return { d:n for n,d in enumerate(listdir(data_dir,include_hidden=include_hidden,include_files=False,include_dirs=True))}
 
 def get_datastream(data_dir, ext=None, classes=None, split_filename=None):
     """

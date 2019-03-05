@@ -3,12 +3,15 @@
 
 # Simple samples
 
-sys.path.append('z:\\GitWork\mPyPl')
+#sys.path.append('z:\\GitWork\mPyPl')
+sys.path.insert(0,'d:\\WORK\\mPyPl')
+
 
 import mPyPl as mp
 from pipe import *
 from mPyPl.utils.pipeutils import *
 
+print('Using mPyPl version %s' % mp.__version__)
 
 range(100) | mp.as_field('n') | mp.apply('n','n5', lambda x:x%5) | mp.dict_group_by('n5')
 
@@ -24,3 +27,7 @@ data = range(100) | mp.as_field('n') | mp.apply('n','class_id', lambda x:x%5) | 
 data | mp.sample_classes('class_id',1,classes=range(15)) | as_list
 
 x = mp.get_xmlstream_fromdir('e:\\data\\babylon\\')
+
+x = mp.get_classes('d:\\WORK\\mPyPl')
+
+

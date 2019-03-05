@@ -1,7 +1,7 @@
 # mPyPl - Monadic Pipeline Library for Python
 # http://github.com/shwars/mPyPl
 
-__version__ = '0.0.3.1'
+__version__ = '0.0.3.2'
 
 from .mdict import *
 from .core import *

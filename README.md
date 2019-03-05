@@ -15,7 +15,7 @@ by the following main ideas:
 
 ## Tutorial
 
-You can [watch intro video](https://www.youtube.com/watch?v=EI1ZYZPcQyI), or read project wiki.
+You can [watch demo video](https://www.youtube.com/watch?v=EI1ZYZPcQyI), this [3 min intro](https://youtu.be/F1c_qQC4Wlw), or read project wiki.
    
 ## Credits
 

@@ -75,3 +75,19 @@ def get_files(data_dir, ext=None):
     else:
         return os.listdir(data_dir) \
             | select( lambda p: os.path.join(data_dir,p))
+
+
+def listdir(path,include_dirs=True,include_files=True,include_hidden=True):
+    """
+    Return the list of files in the specified directory. Similar to `os.listdir`, but better.
+    :param path: Path to the directory
+    :param include_dirs: include subdirectories
+    :param include_filed: include ordinary files
+    :param include_hidden: include hidden files (whose name starts with `.`)
+    :return: list of file names
+    """
+    return [x for x in os.listdir(path)
+            if ((include_dirs and os.path.isdir(os.path.join(path,x)))
+            or (include_files and os.path.isfile(os.path.join(path,x))))
+            and (include_hidden or not x.startswith('.'))
+           ]
