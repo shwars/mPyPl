@@ -9,19 +9,31 @@ from .utils.video import *
 from .utils.fileutils import *
 import builtins
 import functools
+import sys
 
 
 # === Main pipeline operations ===
+
+def __fextract(x,field_name):
+    """
+    Extract value of a given field or fields.
+    :param x: mdict
+    :param field_name: name of a field or list of field names
+    :return: value or list of values
+    """
+    if field_name is None: return x
+    if isinstance(field_name, list) or isinstance(field_name, np.ndarray):
+        return [x[key] for key in field_name]
+    else:
+        return x[field_name]
+
 
 def __fnapply(x,src_field,func):
     """
     Internal. Apply function `func` on the values extracted from dict `x`. If `src_fields` is string, function of one argument is expected.
     If `src_fields` is a list, `func` should take list as an argument.
     """
-    if isinstance(src_field, list) or isinstance(src_field, np.ndarray):
-        return func([x[key] for key in src_field])
-    else:
-        return func(x[src_field])
+    return func(__fextract(x,src_field))
 
 
 @Pipe
@@ -105,6 +117,26 @@ def apply_npy(datastream,src_field, dst_field, func, file_ext=None):
     if not file_ext:
         file_ext = dst_field + ".npy"
     return datastream | fapply(dst_field, functools.partial(applier,file_ext=file_ext))
+
+@Pipe
+def apply_nx(datastream, src_field, dst_field, func,eval_strategy=None,print_exceptions=False):
+    """
+    Same as `apply`, but ignores exceptions by just skipping elements with errors.
+    """
+    def applier(x):
+        r = (lambda : __fnapply(x,src_field,func)) if lazy_strategy(eval_strategy) else __fnapply(x,src_field,func)
+        if dst_field is not None and dst_field!='':
+            x[dst_field]=r
+            if eval_strategy:
+                x.set_eval_strategy(dst_field,eval_strategy)
+        return x
+    for x in datastream:
+        try:
+            yield applier(x)
+        except:
+            if print_exceptions:
+                print("[mPyPl] Exception: {}".format(sys.exc_info()))
+            pass
 
 
 # ==== Filter =====
@@ -195,6 +227,33 @@ def dict_group_by(datasteam, field_name):
     return dict
 
 @Pipe
+def summarize(seq,field_name,func=None,msg=None):
+    """
+    Compute a summary of a given field (eg. count of different values). Resulting dictionary is either passed to `func`,
+    or printed on screen (if `func is None`).
+    :param seq: Datastream
+    :param field_name: Field name to summarize
+    :param func: Function to call after summary is obtained (which is after all stream processing). If `None`, summary is printed on screen.
+    :param msg: Optional message to print before summary
+    :return: Original stream
+    """
+    if field_name is None:
+        return seq
+    d = {}
+    for x in seq:
+        c = x.get(field_name)
+        if c is not None:
+            d[c] = d.get(c,0)+1
+        yield x
+    if func is not None:
+        func(d)
+    else:
+        if len(d.keys())>0:
+            if msg is not None: print(msg)
+            for t in d.keys():
+                print(" + {}: {}".format(t,d[t]))
+
+@Pipe
 def iter(datastream,field_name=None, func=None):
     """
     Execute function `func` on field `field_name` (or list of fields) of every item.
@@ -207,3 +266,75 @@ def iter(datastream,field_name=None, func=None):
             else:
                 __fnapply(x,field_name,func)
         yield x
+
+# === Aux utility functions ===
+
+@Pipe
+def unfold(l,field_name,func,init_state):
+    """
+    Add extra field to the datastream, which is obtained by applying state transformation function `func` to
+    initial state `init_state`
+    :param l: datastream
+    :param func: state transformation function
+    :param init_state: initial state
+    :return: datastream
+    """
+    s = init_state
+    for x in l:
+        x[field_name] = s
+        s = func(s)
+        yield x
+
+@Pipe
+def fenumerate(l,field_name,start=0):
+    """
+    Add extra field to datastream which contains number of record
+    :param l:
+    :param field_name:
+    :return:
+    """
+    return l | unfold(field_name,init_state=start,func=lambda x: x+1)
+
+
+def infinite():
+    """
+    Produce an infinite sequence of empty `mdict`s
+    """
+    while True:
+        yield mdict()
+
+@Pipe
+def fold(l,field_name,func,init_state):
+    """
+    Perform fold of the datastream, using given fold function `func` with initial state `init_state`
+    :param l: datastream
+    :param field_name: field name (or list of names) to use
+    :param func: fold function that takes field(s) value and state and returns state. If field_name is None, func
+    accepts the whole `mdict` as first parameter
+    :param init_state: initial state
+    :return: final state of the fold
+    """
+    s = init_state
+    for x in l:
+        s = func(__fextract(x,field_name),s)
+    return s
+
+@Pipe
+def scan(l,field_name,new_field_name,func,init_state):
+    """
+    Perform scan (cumulitive sum) of the datastream, using given function `func` with initial state `init_state`.
+    Results are places into `new_field_name` field.
+    :param l: datastream
+    :param field_name: field name (or list of names) to use
+    :param new_field_name: field name to use for storing results
+    :param func: fold function that takes field(s) value and state and returns state. If field_name is None, func
+    accepts the whole `mdict` as first parameter
+    :param init_state: initial state
+    :return: final state of the fold
+    """
+    s = init_state
+    for x in l:
+        s = func(__fextract(x,field_name),s)
+        x[new_field_name]=s
+        yield x
+

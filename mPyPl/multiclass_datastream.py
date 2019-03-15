@@ -211,3 +211,15 @@ def make_train_validation_test_split(datastream):
         datastream | where(lambda x: x['split'] == SplitType.Validation),
         datastream | where(lambda x: x['split'] == SplitType.Test)
     )
+
+
+@Pipe
+def summary(seq,class_field_name='class_name',split_field_name='split'):
+    """
+    Print a summary of a data stream
+    :param seq: Datastream
+    :param class_field_name: Field name to differentiate between classes
+    :param split_field_name: Field name to indicate train/test split
+    :return: Original stream
+    """
+    return seq | summarize(field_name=class_field_name,msg="Classes:") | summarize(field_name=split_field_name,msg="Split:")

@@ -53,7 +53,7 @@ class mdict(dict):
             return res
 
     def get(self, item, default=None):
-        return dict.__getitem__(self,item,default)
+        return dict.get(self,item,default)
 
     def as_float(self,item):
         return float(self[item])
@@ -79,4 +79,18 @@ class mdict(dict):
         m = mdict()
         for z in fields:
             m[z] = getattritem(x,z)
+        return m
+
+    @staticmethod
+    def to_mdict(x,include_fields=None,exclude_fields=None):
+        """
+        Convert an arbitrary dictionary to `mdict`
+        :param x: A dictionary
+        :return: `mdict` object with the same fields
+        """
+        m = mdict()
+        kz = x.keys() if include_fields is None else include_fields
+        for z in kz:
+            if exclude_fields is None or z not in exclude_fields:
+                m[z] = x[z]
         return m

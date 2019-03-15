@@ -42,13 +42,27 @@ def infshuffle(l):
             yield x
 
 @Pipe
-def pexec(l,func):
+def pexec(l,func=None,convert_to_list=False):
     """
     Execute function func, passing the pipe sequence as an argument
-    :param func: Function to execute, must accept 1 iterator parameter
+    :param func: Function to execute, must accept 1 iterator as parameter.
+    :param convert_to_list: Convert pipe to list before passing it to function. If `func` is `None`, iterator is converted to list anyway.
     :return: result of func
     """
-    return func(l)
+    if convert_to_list or func is None:
+        l = list(l)
+    if func is not None:
+        return func(l)
+
+@Pipe
+def pforeach(l,func):
+    """
+    Execute given function on each element in the pipe
+    :param l: datastream
+    :param func: function to be called on each element
+    """
+    for x in l:
+        func(x)
 
 @Pipe
 def as_npy(l):
