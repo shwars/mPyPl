@@ -96,6 +96,36 @@ def lzapply(datastream, src_field, dst_field, func, eval_strategy = None):
     return datastream | select(applier)
 
 @Pipe
+def apply_batch(datastream, src_field, dst_field, func, batch_size=32):
+    """
+    Apply function to the field in batches. `batch_size` elements are accumulated into the list, and `func` is called
+    with this parameter.
+    """
+    n=0
+    arg=[]
+    seq=[]
+    for x in datastream:
+        if (n<batch_size):
+            f = __fextract(x,src_field)
+            arg.append(f)
+            seq.append(x)
+            n+=1
+        else:
+            res = func(arg)
+            for u,v in zip(seq,res):
+                u[dst_field] = v
+                yield u
+            n=0
+            arg=[]
+            seq=[]
+    if n>0: # flush remaining items
+        res = func(arg)
+        for u, v in zip(seq, res):
+            u[dst_field] = v
+            yield u
+
+
+@Pipe
 def apply_npy(datastream,src_field, dst_field, func, file_ext=None):
     """
     A caching apply that computes some function returning numpy array, and stores the result on disk
@@ -226,6 +256,38 @@ def dict_group_by(datasteam, field_name):
             dict[x[field_name]] = [x]
     return dict
 
+
+@Pipe
+def sliding_window_npy(seq,field_names,size,cache=10):
+    """
+    Create a stream of sliding windows from a given stream.
+    :param seq: Input sequence
+    :param field_names: Field names to accumulate
+    :param size: Size of sliding window
+    :param cache: Size of the caching array, in a number of `size`-chunks.
+    :return: mPyPl sequence containing numpy arrays for specified fields
+    """
+    cachesize = size*cache
+    buffer = None
+    n = 0
+    for x in seq:
+        data = { i : x[i] for i in field_names }
+        if n==0:
+            buffer = { i : np.zeros((cachesize,)+data[i].shape) for i in field_names }
+        if n<cachesize: # fill mode
+            for i in field_names: buffer[i][n] = data[i]
+            n+=1
+        else: # spit out mode
+            for i in range(cachesize-size):
+                yield mdict( { j : buffer[j][i:i+size] for j in field_names })
+            for i in field_names: buffer[i] = np.roll(buffer[i],(1-n)*size,axis=0)
+            n=size
+    # spit out the rest
+    if n>size:
+        for i in range(n-size):
+            yield mdict( { j : buffer[j][i:i+size] for j in field_names })
+
+
 @Pipe
 def summarize(seq,field_name,func=None,msg=None):
     """
@@ -252,6 +314,22 @@ def summarize(seq,field_name,func=None,msg=None):
             if msg is not None: print(msg)
             for t in d.keys():
                 print(" + {}: {}".format(t,d[t]))
+
+@Pipe
+def inspect(seq,func=None,message="Inspecting mdict"):
+    """
+    Print out the info about the fields in a given stream
+    :return: Original sequence
+    """
+    f = True
+    for x in seq:
+        if f:
+            f=False
+            if func is not None: func(x)
+            else:
+                mdict.inspect(x,message=message)
+        yield x
+
 
 @Pipe
 def iter(datastream,field_name=None, func=None):
@@ -337,4 +415,56 @@ def scan(l,field_name,new_field_name,func,init_state):
         s = func(__fextract(x,field_name),s)
         x[new_field_name]=s
         yield x
+
+@Pipe
+def delay(seq,field_name,delayed_field_name):
+    """
+    Create another field `delayed_field_name` from `field_name` that is one step delayed
+    :param seq: Sequence
+    :param field_name: Original existing field name
+    :param delayed_field_name: New field name to hold the delayed value
+    :return: New sequence
+    """
+    n = None
+    for x in seq:
+        if n is not None:
+            x[delayed_field_name]=n[field_name]
+            yield x
+        n = x
+
+@Pipe
+def batch(datastream,k,n):
+    """
+    Separate only part of the stream for parallel batch processing. If you have `n` nodes, pass number of current node
+    as `k` (from 0 to n-1), and it will pass only part of the stream to be processed by that node. Namely, for i-th
+    element of the stream, it is passed through if i%n==k
+    :param datastream: datastream
+    :param k: number of current node in cluster
+    :param n: total number of nodes
+    :return: resulting datastream which is subset of the original one
+    """
+    i=0
+    for x in datastream:
+        if i%n==k:
+            yield x
+        i+=1
+
+@Pipe
+def silly_progress(seq,n=None,elements=None,symbol='.',width=40):
+    """
+    Print dots to indicate that something good is happening. A dot is printed every `n` items.
+    :param seq: original sequence
+    :param n: number of items to process between printing a dot
+    :param symbol: symbol to print
+    :return: original sequence
+    """
+    if n is None:
+        n = elements//width if elements is not None else 10
+    i=n
+    for x in seq:
+        i-=1
+        yield x
+        if i==0:
+            print(symbol, end='')
+            i=n
 

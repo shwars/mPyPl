@@ -19,6 +19,7 @@ import enum
 from pipe import *
 from .core import *
 from .utils.fileutils import *
+from .utils.coreutils import normalize_npy
 
 SplitType = enum.Enum('SplitType',['Unknown','Train','Test','Valiadation'])
 
@@ -223,3 +224,111 @@ def summary(seq,class_field_name='class_name',split_field_name='split'):
     :return: Original stream
     """
     return seq | summarize(field_name=class_field_name,msg="Classes:") | summarize(field_name=split_field_name,msg="Split:")
+
+@Pipe
+def stratify_sample(seq,n=None,shuffle=False,field_name='class_id'):
+    """
+    Returns stratified samples of size `n` from each class (given dy `field_name`) in round robin manner.
+    NB: This operation is cachy (caches all data in memory)
+    :param l: input pipe generator
+    :param n: number of samples or `None` (in which case the min number of elements is used)
+    :param shuffle: perform random shuffling of samples
+    :param field_name: name of field that specifies classes. `class_no` by default.
+    :return: result sequence
+    """
+    data = {}
+    for x in seq:
+        t = x[field_name]
+        if t not in data.keys(): data[t] = []
+        data[t].append(x)
+    if n is None:
+        n = min([len(data[t]) for t in data.keys()])
+    else:
+        n = min(n,min([len(data[t]) for t in data.keys()]))
+    if shuffle:
+        for t in data.keys(): random.shuffle(data[t])
+        for i in range(n):
+            for t in data.keys():
+                yield data[t][i]
+
+@Pipe
+def stratify_sample_tt(seq,n_samples=None,shuffle=False,class_field_name='class_id',split_field_name='split'):
+    """
+    Returns stratified training, test and validation samples of size `n_sample` from each class
+    (given dy `class_field_name`) in round robin manner.
+    `n_samples` is a dict specifying number of samples for each split type (or None).
+    NB: This operation is cachy (caches all data in memory)
+    :param l: input pipe generator
+    :param n_samples: dict specifying number of samples for each split type or `None` (in which case the min number of elements is used)
+    :param shuffle: perform random shuffling of samples
+    :param class_field_name: name of field that specifies classes. `class_id` by default.
+    :param split_field_name: name of field that specifies split. `split` by default.
+    :return: result sequence
+    """
+    if n_samples is None: n_samples = {}
+    data = {}
+    for x in seq:
+        t = x[class_field_name]
+        s = x[split_field_name]
+        if s not in data.keys(): data[s] = {}
+        if t not in data[s].keys(): data[s][t] = []
+        data[s][t].append(x)
+    for s in data.keys(): # TODO: make sure train data is returned first
+        if n_samples.get(s,None) is None:
+            n = min([len(data[s][t]) for t in data[s].keys()])
+        else:
+            n = min(n_samples.get(s),min([len(data[s][t]) for t in data[s].keys()]))
+        if shuffle:
+            for t in data[s].keys(): random.shuffle(data[s][t])
+        for i in range(n):
+            for t in data[s].keys():
+                yield data[s][t][i]
+
+@Pipe
+def datasplit_by_pattern(datastream,train_pattern=None,valid_pattern=None,test_pattern=None):
+    """
+    Attach data split info to the stream according to some pattern in filename.
+    :param datastream: Datastream, which should contain the field 'filename', or be string stream
+    :param train_pattern: Train pattern to use. If None, all are considered Train by default
+    :param valid_pattern: Validation pattern to use. If None, there will be no validation.
+    :param test_pattern: Test pattern to use. If None, there will be no validation.
+    :return: Datastream augmented with `split` field
+    """
+    def check(t,pattern):
+        if pattern is None:
+            return False
+        if isinstance(pattern,list):
+            for x in pattern:
+                if x in t:
+                    return True
+            return False
+        else:
+            return pattern in t
+
+    def mksplit(x):
+        t = os.path.basename(x['filename']) if 'filename' in x.keys() else x
+        if check(t,valid_pattern):
+            return SplitType.Validation
+        if check(t,test_pattern):
+            return SplitType.Test
+        if train_pattern is None:
+            return SplitType.Train
+        else:
+            if check(t,train_pattern):
+                return SplitType.Train
+            else:
+                return SplitType.Unknown
+
+    return datastream | fapply('split',mksplit)
+
+@Pipe
+def normalize_npy_value(seq,field_name,interval=(0,1)):
+    """
+    Normalize values of the field specified by `field_name` in the given `interval`
+    Normalization is applied invividually to each sequence element
+    :param seq: Input datastream
+    :param field_name: Field name
+    :param interval: Interval (default to (0,1))
+    :return: Datastream with a field normalized
+    """
+    return seq | sapply(field_name,lambda x: normalize_npy(x,interval))

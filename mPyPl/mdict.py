@@ -3,6 +3,8 @@
 
 import enum
 from .utils.coreutils import getattritem
+import json
+import numpy as np
 
 """
 Different evaluation strategies that can be used for `mdict` slots:
@@ -94,3 +96,23 @@ class mdict(dict):
             if exclude_fields is None or z not in exclude_fields:
                 m[z] = x[z]
         return m
+
+    @staticmethod
+    def from_json(fn):
+        with open(fn, 'r') as f:
+            res = json.load(f)
+        for x in res:
+            yield mdict.to_mdict(x)
+
+    @staticmethod
+    def inspect(md, message="Inspecting mdict"):
+        flds = md.keys()
+        print(message)
+        for x in flds:
+            add = ""
+            t = md.get(x, None)
+            if t is not None:
+                add = ", type={}".format(type(t))
+                if type(t) is np.ndarray:
+                    add += ", shape={}".format(t.shape)
+            print(" + {}, eval strategy={}{}".format(x, md.eval_strategies.get(x, None), add))  # TODO: print eval options and type

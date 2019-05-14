@@ -19,17 +19,19 @@ def as_batch(flow, feature_field_name='features', label_field_name='label', batc
     while (True):
         for i in range(batchsize):
             data = next(flow)
+            # explicitly compute all fields - this is needed for all fields to be computed only once for on-demand evaluation
+            flds = { i : data[i] for i in (feature_field_name if isinstance(feature_field_name, list) else [feature_field_name])}
             if batch is None:
                 if isinstance(feature_field_name, list):
-                    batch = [np.zeros((batchsize,)+data[i].shape) for i in feature_field_name]
+                    batch = [np.zeros((batchsize,)+flds[i].shape) for i in feature_field_name]
                 else:
-                    batch = np.zeros((batchsize,)+data[feature_field_name].shape)
+                    batch = np.zeros((batchsize,)+flds[feature_field_name].shape)
                 labels = np.zeros((batchsize,1))
             if isinstance(feature_field_name, list):
                 for j,n in enumerate(feature_field_name):
-                    batch[j][i] = data[n]
+                    batch[j][i] = flds[n]
             else:
-                batch[i] = data[feature_field_name]
+                batch[i] = flds[feature_field_name]
             labels[i] = data[label_field_name]
         yield (batch, labels)
         batch = labels = None

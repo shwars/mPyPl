@@ -147,3 +147,12 @@ def pload(filename):
     with open(filename, 'rb') as input:
         ls = pickle.load(input)
     return ls
+
+@Pipe
+def execute(l):
+    """
+    Runs all elements of the pipeline, ignoring the result
+    The same as _ = pipe | as_list
+    :param l: Pipeline to execute
+    """
+    list(l)
