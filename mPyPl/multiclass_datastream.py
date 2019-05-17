@@ -247,9 +247,9 @@ def stratify_sample(seq,n=None,shuffle=False,field_name='class_id'):
         n = min(n,min([len(data[t]) for t in data.keys()]))
     if shuffle:
         for t in data.keys(): random.shuffle(data[t])
-        for i in range(n):
-            for t in data.keys():
-                yield data[t][i]
+    for i in range(n):
+        for t in data.keys():
+            yield data[t][i]
 
 @Pipe
 def stratify_sample_tt(seq,n_samples=None,shuffle=False,class_field_name='class_id',split_field_name='split'):
