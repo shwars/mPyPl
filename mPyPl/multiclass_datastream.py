@@ -242,9 +242,9 @@ def stratify_sample(seq,n=None,shuffle=False,field_name='class_id'):
         if t not in data.keys(): data[t] = []
         data[t].append(x)
     if n is None:
-        n = min([len(data[t]) for t in data.keys()])
+        n = builtins.min([len(data[t]) for t in data.keys()])
     else:
-        n = min(n,min([len(data[t]) for t in data.keys()]))
+        n = builtins.min(n,builtins.min([len(data[t]) for t in data.keys()]))
     if shuffle:
         for t in data.keys(): random.shuffle(data[t])
     for i in range(n):
@@ -275,9 +275,9 @@ def stratify_sample_tt(seq,n_samples=None,shuffle=False,class_field_name='class_
         data[s][t].append(x)
     for s in data.keys(): # TODO: make sure train data is returned first
         if n_samples.get(s,None) is None:
-            n = min([len(data[s][t]) for t in data[s].keys()])
+            n = builtins.min([len(data[s][t]) for t in data[s].keys()])
         else:
-            n = min(n_samples.get(s),min([len(data[s][t]) for t in data[s].keys()]))
+            n = builtins.min(n_samples.get(s),builtins.min([len(data[s][t]) for t in data[s].keys()]))
         if shuffle:
             for t in data[s].keys(): random.shuffle(data[s][t])
         for i in range(n):
