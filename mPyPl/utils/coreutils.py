@@ -34,6 +34,21 @@ def enlist(x):
     else:
         return [x]
 
+def entuple(x,n=2):
+    """
+    Make sure given value is a tuple. It is useful, for example, when you want to provide dimentions of an image either
+    as a tuple, or as an int - in which case you can use `(w,h) = entuple(x)`.
+    :param x: Either atomic value or a tuple. If the value is atomic, it is converted to a tuple of length `n`. It the value
+    is a tuple - it is inchanged
+    :param n: Number of elements in a tuple
+    :return: Tuple of a specified size
+    """
+    if type(x) is tuple:
+        return x
+    elif type(x) is list:
+        return tuple(x)
+    else:
+        return tuple([x]*n)
 
 def print_decorate(msg,expr):
     """

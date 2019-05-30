@@ -8,6 +8,8 @@ sys.path.insert(0,'z:\\GitWork\mPyPl')
 import mPyPl as mp
 from pipe import *
 from mPyPl.utils.pipeutils import *
+import cv2
+import mPyPl.utils.image as mpui
 
 print("Using mPyPl version "+mp.__version__)
 
@@ -30,3 +32,15 @@ x = mp.get_xmlstream_fromdir('e:\\data\\babylon\\')
 mp.infinite() | mp.fenumerate('x',start=1) | take(100) | mp.fold('x',lambda x,y: x+y,0)
 
 mp.jsonstream("z:\\GitWork\\mPyPl\\examples\\demo.json") | as_list
+
+
+im = mp.im_resize(cv2.imread('e:\\temp\\data\\img.jpg'),size=300)
+
+mpui.show_images(mpui.im_tilecut(im,tile_size=110),cols=3)
+
+
+([{"a": [1,2,3], "b" : 12, "c" : [11,12,13]}, {"a" : [3,4,5], "b" : 13, "c": [13,14,15] }]
+ | select(lambda x: mp.mdict(x))
+ | mp.unroll(['a','c'])
+ | mp.as_list
+ )

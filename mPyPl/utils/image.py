@@ -4,17 +4,19 @@
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
+from .coreutils import entuple
+from math import ceil
 
 # taken from https://stackoverflow.com/questions/44720580/resize-image-canvas-to-maintain-square-aspect-ratio-in-python-opencv
 def im_resize_pad(img, size, pad_color=0):
     """
     Resize an image with padding
     :param img: Original image
-    :param size: Size in the form (Width,Height). Both should be present
+    :param size: Size in the form (Width,Height). Both should be present. If int is given, square image is assumed.
     :return: Resized image
     """
     h, w = img.shape[:2]
-    sh, sw = size
+    sh, sw = entuple(size)
 
     # interpolation method
     if h > sh or w > sw: # shrinking image
@@ -57,10 +59,11 @@ def im_resize(frame,size):
     Resize an image, calculating one of the dimensions if needed
     :param frame: Original image
     :param size: Size in the form (Width,Height). If one of the parameters is None, it is calculated. If both are present,
-    image is stretched.
+    image is stretched. If size is int - square image is assumed. If it is None - original image is returned
     :return: Resized image
     """
-    width,height=size
+    if size is None: return frame
+    width,height=entuple(size)
     if width or height:
         width = width if width else int(height / frame.shape[0] * frame.shape[1])
         height = height if height else int(width / frame.shape[1] * frame.shape[0])
@@ -104,3 +107,28 @@ def calc_bounding_box(img):
     rmin, rmax = np.where(rows)[0][[0, -1]]
     cmin, cmax = np.where(cols)[0][[0, -1]]
     return rmin, cmin, rmax, cmax
+
+
+def im_tilecut(img, tile_no=None, tile_size=None):
+    """
+    Cut the image into a sequence of smaller (possibly overlapping) tiles. Either `tile_no` or `tile_size` should
+    be specified.
+    :param img: Source image
+    :param tile_no: Number of tiles. Either `None`, or int, or tuple (if number of tiles is different across x and y.
+    :param tile_size: Size of the tiles in pixels. Either `None`, or int, or tuple.
+    :return: Sequence of tiles.
+    """
+    dx,dy = img.shape[0:2]
+    if tile_no is not None and tile_size is None:
+        nx,ny = entuple(tile_no)
+        wx,wy = ceil(dx/nx),ceil(dy/ny)
+    elif tile_no is None and tile_size is not None:
+        wx,wy = entuple(tile_size)
+        nx,ny = ceil(dx/wx),ceil(dy/wy)
+    else:
+        return None
+    sx,sy = (dx-wx)//(nx-1),(dy-wy)//(ny-1) # TODO: fix a problem when nx=1 or ny=1
+    for i in range(0,dx,sx):
+        for j in range(0,dy,sy):
+            if i+wx>=dx or j+wy>=dy: continue
+            yield img[i:i+wx,j:j+wy]

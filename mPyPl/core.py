@@ -5,6 +5,7 @@ import os
 from .mdict import *
 from pipe import *
 from .utils.pipeutils import *
+from .utils.coreutils import *
 from .utils.video import *
 from .utils.fileutils import *
 import builtins
@@ -345,6 +346,23 @@ def iter(datastream,field_name=None, func=None):
                 __fnapply(x,field_name,func)
         yield x
 
+@Pipe
+def iteri(datastream,field_name=None, func=None):
+    """
+    Execute function `func` on field `field_name` (or list of fields) of every item.
+    If `field_name` is omitted or `None`, function is applied on the whole dictionary (this usage is not recommended).
+    Function receives number of frame as the first argument
+    """
+    i=0
+    for x in datastream:
+        if func is not None:
+            if field_name is None:
+                func(i,x)
+            else:
+                __fnapply(x,field_name,itertools.partial(func,i))
+        yield x
+        i+=1
+
 # === Aux utility functions ===
 
 @Pipe
@@ -362,6 +380,22 @@ def unfold(l,field_name,func,init_state):
         x[field_name] = s
         s = func(s)
         yield x
+
+@Pipe
+def unroll(datastream, field):
+    """
+    Field `field` is assumed to be a sequence. This function unrolls the sequence, i.e. replacing the sequence field
+    with the actual values inside the sequence. All other field values are duplicated.
+    :param datasteam: Data stream
+    :param field: Field name or list of field names. If several fields are listed, corresponding sequences should preferably be of the same size.
+    """
+    field = enlist(field)
+    for x in datastream:
+        f = __fextract(x,field)
+        for v in zip(*f):
+            y = mdict(x)
+            for fld,val in zip(field,v): y[fld]=val
+            yield y
 
 @Pipe
 def fenumerate(l,field_name,start=0):
