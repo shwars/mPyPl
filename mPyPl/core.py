@@ -359,7 +359,7 @@ def iteri(datastream,field_name=None, func=None):
             if field_name is None:
                 func(i,x)
             else:
-                __fnapply(x,field_name,itertools.partial(func,i))
+                __fnapply(x,field_name,functools.partial(func,i))
         yield x
         i+=1
 
