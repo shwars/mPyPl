@@ -237,7 +237,22 @@ def select_fields(datastream,field_names):
     Because field immutability is encouraged, the best way to get rid of some fields and free up memory
     is to select out a new data structure with the ones you want copied over.
     """
-    return datastream | select(lambda x: mdict({k: x[k] for k in field_names}))
+    return datastream | select(lambda x: x.clone(fields=field_names))
+
+
+@Pipe
+def set_eval_strategy(datastream,field_name,evs):
+    """
+    Set evaluation strategy of a speficied field
+    :param datastream: Datastream
+    :param field_name: Name of field or fields (str or list)
+    :param evs: Desired evaluation strategy
+    :return: Datastream
+    """
+    for x in datastream:
+        for f in enlist(field_name):
+            x.set_eval_strategy(f,evs)
+        yield x
 
 @Pipe
 def dict_group_by(datasteam, field_name):
@@ -393,7 +408,7 @@ def unroll(datastream, field):
     for x in datastream:
         f = __fextract(x,field)
         for v in zip(*f):
-            y = mdict(x)
+            y = x.clone()
             for fld,val in zip(field,v): y[fld]=val
             yield y
 

@@ -69,6 +69,13 @@ class mdict(dict):
     def as_csv_header(self):
         return ','.join(map(encode_csv,self.keys()))
 
+    def clone(self,fields=None):
+        if fields is None:
+            d = mdict(self)
+        else:
+            d = mdict({k: self[k] for k in fields})
+        d.eval_strategies = self.eval_strategies
+        return d
 
     @staticmethod
     def extract_from_object(x,fields):

@@ -41,6 +41,18 @@ mpui.show_images(mpui.im_tilecut(im,tile_size=110),cols=3)
 
 ([{"a": [1,2,3], "b" : 12, "c" : [11,12,13]}, {"a" : [3,4,5], "b" : 13, "c": [13,14,15] }]
  | select(lambda x: mp.mdict(x))
+ | mp.set_eval_strategy("a",mp.EvalStrategies.OnDemand)
+ | mp.inspect()
  | mp.unroll(['a','c'])
+ | mp.inspect()
  | mp.as_list
  )
+
+## Check is select_fields preserves strategies
+( [1,2,3,4,5]
+  | mp.as_field("x")
+  | mp.apply('x','y',(lambda x: x+1),eval_strategy=mp.EvalStrategies.OnDemand)
+  | mp.select_fields(['x','y'])
+  | mp.inspect()
+  | mp.execute
+)
