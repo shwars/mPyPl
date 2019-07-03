@@ -2,7 +2,7 @@
 # http://github.com/shwars/mPyPl
 
 import enum
-from .utils.coreutils import getattritem
+from .utils.coreutils import getattritem,encode_csv
 import json
 import numpy as np
 
@@ -63,11 +63,11 @@ class mdict(dict):
     def as_int(self,item):
         return int(self[item])
 
-    def as_csv(self):
-        return ','.join(map(encode_csv,self.values()))
+    def as_csv(self,sep=','):
+        return sep.join(map(lambda x: encode_csv(x,sep),self.values()))
 
-    def as_csv_header(self):
-        return ','.join(map(encode_csv,self.keys()))
+    def as_csv_header(self,sep=','):
+        return sep.join(map(lambda x: encode_csv(x,sep),self.keys()))
 
     def clone(self,fields=None):
         if fields is None:

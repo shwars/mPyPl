@@ -79,3 +79,15 @@ def normalize_npy(x,interval=(0,1)):
     mi = np.min(x)
     ma = np.max(x)
     return (x-mi)/(ma-mi)*(interval[1]-interval[0])+interval[0]
+
+def encode_csv(s,sep=','):
+    """
+    Returns a string, escaping it if necessary for CSV encoding
+    :param s: original string
+    :param sep: separator to be used, defaults to ','
+    :return: original of quote-enclosed string
+    """
+    if s.find(sep)>=0:
+        return '\"{}\"'.format(s)
+    else:
+        return s

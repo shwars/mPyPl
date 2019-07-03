@@ -56,3 +56,4 @@ mpui.show_images(mpui.im_tilecut(im,tile_size=110),cols=3)
   | mp.inspect()
   | mp.execute
 )
+

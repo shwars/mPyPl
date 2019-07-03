@@ -9,6 +9,7 @@ from .funcs import *
 from .video import  *
 from .keras import *
 from .sink import *
+from .sources import *
 from .jsonstream import *
 from .multiclass_datastream import *
 from .xmlstream import *
