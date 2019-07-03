@@ -4,7 +4,7 @@
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
-from .coreutils import entuple
+from .coreutils import entuple,enlist
 from math import ceil
 
 # taken from https://stackoverflow.com/questions/44720580/resize-image-canvas-to-maintain-square-aspect-ratio-in-python-opencv
@@ -132,3 +132,35 @@ def im_tilecut(img, tile_no=None, tile_size=None):
         for j in range(0,dy,sy):
             if i+wx>=dx or j+wy>=dy: continue
             yield img[i:i+wx,j:j+wy]
+
+def imprint_scale(frame,scores,width=10,sep=3,offset=10,colors=[((255,0,0),(0,255,0))]):
+    """
+    A function used to imprint the results of the model into an image / video frame.
+    :param frame: Image frame
+    :param scores: A value or a list of values
+    :param width: Width of each scale (default 10)
+    :param sep: Separation between scales (default 3)
+    :param offset: Offset of scales (default 10)
+    :param colors: Array of color values.
+    :return: Resulting frame with scales imprinted
+    """
+    scores = enlist(scores)
+    h = frame.shape[0]
+    for i,z in enumerate(scores):
+        lc = i%len(colors)
+        clr = colors[lc][0] if z<0.5 else colors[lc][1]
+        off = offset+i*(width+sep)
+        cv2.rectangle(frame,(off,offset),(off+width,h-offset),clr,1)
+        cv2.line(frame,(off+width//2,h-offset),(off+width//2,h-offset-int((h-2*offset)*z)),clr,width-1)
+    return frame
+
+
+def imprint_scale_mp(args,width=10,sep=3,offset=10,colors=[((255,0,0),(0,255,0))]):
+    """
+    A function used to imprint the results of the model into an image / video frame. This function is useful inside mPyPl
+    pipeline together with apply function, eg. `mp.apply(['image','val1','val2'], 'res', mp.imprint_scale_mp)`
+    :param args: A list of input values. First value should be an image, the rest are values in the range 0..1.
+    :return: Image with imprinted indicators
+    """
+    frame, *scores = args
+    return imprint_scale(frame,scores,width,sep,offset,colors)
