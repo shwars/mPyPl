@@ -27,7 +27,8 @@ def as_batch(flow, feature_field_name='features', label_field_name='label', batc
                     batch = [np.zeros((batchsize,)+flds[i].shape) for i in feature_field_name]
                 else:
                     batch = np.zeros((batchsize,)+flds[feature_field_name].shape)
-                labels = np.zeros((batchsize,)+lbls.shape)
+                lbls_shape = lbls.shape if lbls is np.ndarray else 1
+                labels = np.zeros((batchsize,)+lbls_shape)
             if isinstance(feature_field_name, list):
                 for j,n in enumerate(feature_field_name):
                     batch[j][i] = flds[n]
