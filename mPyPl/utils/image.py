@@ -71,6 +71,27 @@ def im_resize(frame,size):
     else:
         return frame
 
+def im_load(fn,size=None,pad_color=None,color_conv=True):
+    """
+        Load image from disk, resize and prepare for NN training
+    :param fn: Filename
+    :param size: Size of the image (tuple). If not speficied, resizing is not performed
+    :param pad_color: Use padding with specified color when resizing. If None, image is stretched
+    :param color_conv: Use BGR2RGB color conversion.
+    :return: Image array
+    """
+    im = cv2.imread(fn)
+    if im is None:
+        raise(Exception(f'Cannot open {fn}'))
+    if color_conv:
+        im = cv2.cvtColor(im,cv2.COLOR_BGR2RGB)
+    if size is not None:
+        if pad_color is not None:
+            im = im_resize_pad(im,size,pad_color)
+        else:
+            im = im_resize(im,size)
+    return im
+
 def show_images(images, cols = 1, titles = None):
     """
     Show a list of images using matplotlib

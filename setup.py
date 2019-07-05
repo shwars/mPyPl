@@ -10,7 +10,7 @@ setuptools.setup(
     name='mPyPl',
     packages=setuptools.find_packages(),
     version=mPyPl.__version__,
-    install_requires=['pipe>=1.5.0','numpy>=1.11','opencv-python','matplotlib'],
+    install_requires=['pipe>=1.5.0','numpy>=1.11','opencv-python','matplotlib','keras'],
     description='Monadic Pipeline Library for Python',
     author='Dmitri Soshnikov',
     author_email='dmitri@soshnikov.com',
