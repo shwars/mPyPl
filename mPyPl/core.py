@@ -106,12 +106,11 @@ def apply_batch(datastream, src_field, dst_field, func, batch_size=32):
     arg=[]
     seq=[]
     for x in datastream:
-        if (n<batch_size):
-            f = __fextract(x,src_field)
-            arg.append(f)
-            seq.append(x)
-            n+=1
-        else:
+        f = __fextract(x,src_field)
+        arg.append(f)
+        seq.append(x)
+        n+=1
+        if (n>=batch_size):
             res = func(arg)
             for u,v in zip(seq,res):
                 u[dst_field] = v
@@ -211,6 +210,13 @@ def as_field(datastream,field_name):
     Convert stream of any objects into proper datastream of `mdict`'s, with one named field
     """
     return datastream | select( lambda x : mdict( { field_name : x}))
+
+@Pipe
+def as_fields(datastream,field_names):
+    """
+    Convert stream of tuples/lists into proper datastream of `mdict`'s, with named fields
+    """
+    return datastream | select( lambda x : mdict( dict(zip(field_names,x))))
 
 @Pipe
 def ensure_field(datastream,field_name):
@@ -516,4 +522,4 @@ def silly_progress(seq,n=None,elements=None,symbol='.',width=40):
         if i==0:
             print(symbol, end='')
             i=n
-
+    print('')

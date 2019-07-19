@@ -12,3 +12,12 @@ def dict_lookup(dict):
     :return: Lambda-function to perform the lookup in the dictionary
     """
     return lambda x: dict[x]
+
+def enfunc(x):
+    """
+    So-called K combinator. Given any value `x`, returns a function, that for any
+    input value returns `x`
+    :param x: value to be returned
+    :return: function that returns `x` for any input
+    """
+    return lambda _ : x

@@ -92,6 +92,22 @@ def pconcat(l):
             yield y
 
 @Pipe
+def pif(datastream,expr,pipe):
+    """
+    Perform conditional application of a pipe to a pipeline. For example, if you want to limit number of processed
+    elements based on a certain variable, and do not perform any limitation is the variable is `None`, you can use
+    `data | mp.pif(limit is not None,mp.take(limit))`
+    :param datastream: Source data stream
+    :param expr: Conditional expression
+    :param pipe: Pipeline to be applied.
+    :return:
+    """
+    if expr:
+        return datastream | pipe
+    else:
+        return datastream
+
+@Pipe
 def puniq(l):
     u = []
     for x in l:
