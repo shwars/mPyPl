@@ -1,3 +1,6 @@
+---
+layout: default
+---
 # mPyPl
 ### Monadic Pipeline Library for Python
 
