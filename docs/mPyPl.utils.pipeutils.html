@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module mPyPl.utils.pipeutils</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="mPyPl.html"><font color="#ffffff">mPyPl</font></a>.<a href="mPyPl.utils.html"><font color="#ffffff">utils</font></a>.pipeutils</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cwinapp%5Cminiconda3%5Clib%5Csite-packages%5Cmpypl%5Cutils%5Cpipeutils.py">c:\winapp\miniconda3\lib\site-packages\mpypl\utils\pipeutils.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="itertools.html">itertools</a><br>
+</td><td width="25%" valign=top><a href="numpy.html">numpy</a><br>
+</td><td width="25%" valign=top><a href="pickle.html">pickle</a><br>
+</td><td width="25%" valign=top><a href="random.html">random</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-pload"><strong>pload</strong></a>(filename)</dt><dd><tt>Load&nbsp;a&nbsp;datastream&nbsp;(list)&nbsp;from&nbsp;file&nbsp;and&nbsp;use&nbsp;it&nbsp;as&nbsp;a&nbsp;pipe<br>
+:param&nbsp;filename:&nbsp;filename&nbsp;to&nbsp;use<br>
+:return:&nbsp;datastream&nbsp;(list)</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Pipe functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-add"><strong>add</strong></a>(x)</dt></dl>
+ <dl><dt><a name="-aggregate"><strong>aggregate</strong></a>(iterable, function, **kwargs)</dt></dl>
+ <dl><dt><a name="-all"><strong>all</strong></a>(iterable, pred)</dt><dd><tt>Returns&nbsp;True&nbsp;if&nbsp;ALL&nbsp;elements&nbsp;in&nbsp;the&nbsp;given&nbsp;iterable&nbsp;are&nbsp;true&nbsp;for&nbsp;the<br>
+given&nbsp;pred&nbsp;function</tt></dd></dl>
+ <dl><dt><a name="-any"><strong>any</strong></a>(iterable, pred)</dt><dd><tt>Returns&nbsp;True&nbsp;if&nbsp;ANY&nbsp;element&nbsp;in&nbsp;the&nbsp;given&nbsp;iterable&nbsp;is&nbsp;True&nbsp;for&nbsp;the<br>
+given&nbsp;pred&nbsp;function</tt></dd></dl>
+ <dl><dt><a name="-as_dict"><strong>as_dict</strong></a>(iterable)</dt></dl>
+ <dl><dt><a name="-as_list"><strong>as_list</strong></a>(iterable)</dt></dl>
+ <dl><dt><a name="-as_npy"><strong>as_npy</strong></a>(l)</dt><dd><tt>Convert&nbsp;the&nbsp;sequence&nbsp;into&nbsp;numpy&nbsp;array.&nbsp;Use&nbsp;as&nbsp;`seq&nbsp;|&nbsp;as_npy`<br>
+:param&nbsp;l:&nbsp;input&nbsp;pipe&nbsp;generator&nbsp;(finite)<br>
+:return:&nbsp;numpy&nbsp;array&nbsp;created&nbsp;from&nbsp;the&nbsp;generator</tt></dd></dl>
+ <dl><dt><a name="-as_set"><strong>as_set</strong></a>(iterable)</dt></dl>
+ <dl><dt><a name="-as_tuple"><strong>as_tuple</strong></a>(iterable)</dt></dl>
+ <dl><dt><a name="-average"><strong>average</strong></a>(iterable)</dt><dd><tt>Build&nbsp;the&nbsp;average&nbsp;for&nbsp;the&nbsp;given&nbsp;iterable,&nbsp;starting&nbsp;with&nbsp;0.0&nbsp;as&nbsp;seed<br>
+Will&nbsp;try&nbsp;a&nbsp;division&nbsp;by&nbsp;0&nbsp;if&nbsp;the&nbsp;iterable&nbsp;is&nbsp;empty...</tt></dd></dl>
+ <dl><dt><a name="-chain"><strong>chain</strong></a>(iterable)</dt></dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><strong>chain_with</strong> = <a name="chain_with">class chain</a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>chain(*iterables)&nbsp;--&gt;&nbsp;chain&nbsp;object<br>
+&nbsp;<br>
+Return&nbsp;a&nbsp;chain&nbsp;object&nbsp;whose&nbsp;.<a href="#chain_with-__next__">__next__</a>()&nbsp;method&nbsp;returns&nbsp;elements&nbsp;from&nbsp;the<br>
+first&nbsp;iterable&nbsp;until&nbsp;it&nbsp;is&nbsp;exhausted,&nbsp;then&nbsp;elements&nbsp;from&nbsp;the&nbsp;next<br>
+iterable,&nbsp;until&nbsp;all&nbsp;of&nbsp;the&nbsp;iterables&nbsp;are&nbsp;exhausted.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="chain-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="chain-__iter__"><strong>__iter__</strong></a>(self, /)</dt><dd><tt>Implement&nbsp;iter(self).</tt></dd></dl>
+
+<dl><dt><a name="chain-__next__"><strong>__next__</strong></a>(self, /)</dt><dd><tt>Implement&nbsp;next(self).</tt></dd></dl>
+
+<dl><dt><a name="chain-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Return&nbsp;state&nbsp;information&nbsp;for&nbsp;pickling.</tt></dd></dl>
+
+<dl><dt><a name="chain-__setstate__"><strong>__setstate__</strong></a>(...)</dt><dd><tt>Set&nbsp;state&nbsp;information&nbsp;for&nbsp;unpickling.</tt></dd></dl>
+
+<hr>
+Class methods defined here:<br>
+<dl><dt><a name="chain-from_iterable"><strong>from_iterable</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>chain.<a href="#chain_with-from_iterable">from_iterable</a>(iterable)&nbsp;--&gt;&nbsp;chain&nbsp;object<br>
+&nbsp;<br>
+Alternate&nbsp;chain()&nbsp;constructor&nbsp;taking&nbsp;a&nbsp;single&nbsp;iterable&nbsp;argument<br>
+that&nbsp;evaluates&nbsp;lazily.</tt></dd></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="chain-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+</td></tr></table> <dl><dt><a name="-concat"><strong>concat</strong></a>(iterable, separator=', ')</dt></dl>
+ <dl><dt><a name="-count"><strong>count</strong></a>(iterable)</dt><dd><tt>Count&nbsp;the&nbsp;size&nbsp;of&nbsp;the&nbsp;given&nbsp;iterable,&nbsp;walking&nbsp;thrue&nbsp;it.</tt></dd></dl>
+ <dl><dt><a name="-dedup"><strong>dedup</strong></a>(iterable)</dt><dd><tt>Only&nbsp;yield&nbsp;unique&nbsp;items.&nbsp;Use&nbsp;a&nbsp;set&nbsp;to&nbsp;keep&nbsp;track&nbsp;of&nbsp;duplicate&nbsp;data.</tt></dd></dl>
+ <dl><dt><a name="-execute"><strong>execute</strong></a>(l)</dt><dd><tt>Runs&nbsp;all&nbsp;elements&nbsp;of&nbsp;the&nbsp;pipeline,&nbsp;ignoring&nbsp;the&nbsp;result<br>
+The&nbsp;same&nbsp;as&nbsp;_&nbsp;=&nbsp;pipe&nbsp;|&nbsp;as_list<br>
+:param&nbsp;l:&nbsp;Pipeline&nbsp;to&nbsp;execute</tt></dd></dl>
+ <dl><dt><a name="-first"><strong>first</strong></a>(l)</dt><dd><tt>Returns&nbsp;first&nbsp;element&nbsp;of&nbsp;a&nbsp;pipe<br>
+:param&nbsp;datastream:&nbsp;input&nbsp;pipe&nbsp;generator<br>
+:return:&nbsp;first&nbsp;element</tt></dd></dl>
+ <dl><dt><a name="-groupby"><strong>groupby</strong></a>(iterable, keyfunc)</dt></dl>
+ <dl><dt><a name="-index"><strong>index</strong></a>(iterable, value, start=0, stop=None)</dt></dl>
+ <dl><dt><a name="-infshuffle"><strong>infshuffle</strong></a>(l)</dt><dd><tt>Function&nbsp;that&nbsp;turns&nbsp;sequence&nbsp;into&nbsp;infinite&nbsp;shuffled&nbsp;sequence.&nbsp;It&nbsp;loads&nbsp;it&nbsp;into&nbsp;memory&nbsp;for&nbsp;processing.<br>
+:param&nbsp;l:&nbsp;input&nbsp;pipe&nbsp;generator<br>
+:return:&nbsp;result&nbsp;sequence</tt></dd></dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="islice">class <strong>islice</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>islice(iterable,&nbsp;stop)&nbsp;--&gt;&nbsp;islice&nbsp;object<br>
+islice(iterable,&nbsp;start,&nbsp;stop[,&nbsp;step])&nbsp;--&gt;&nbsp;islice&nbsp;object<br>
+&nbsp;<br>
+Return&nbsp;an&nbsp;iterator&nbsp;whose&nbsp;next()&nbsp;method&nbsp;returns&nbsp;selected&nbsp;values&nbsp;from&nbsp;an<br>
+iterable.&nbsp;&nbsp;If&nbsp;start&nbsp;is&nbsp;specified,&nbsp;will&nbsp;skip&nbsp;all&nbsp;preceding&nbsp;elements;<br>
+otherwise,&nbsp;start&nbsp;defaults&nbsp;to&nbsp;zero.&nbsp;&nbsp;Step&nbsp;defaults&nbsp;to&nbsp;one.&nbsp;&nbsp;If<br>
+specified&nbsp;as&nbsp;another&nbsp;value,&nbsp;step&nbsp;determines&nbsp;how&nbsp;many&nbsp;values&nbsp;are&nbsp;<br>
+skipped&nbsp;between&nbsp;successive&nbsp;calls.&nbsp;&nbsp;Works&nbsp;like&nbsp;a&nbsp;slice()&nbsp;on&nbsp;a&nbsp;list<br>
+but&nbsp;returns&nbsp;an&nbsp;iterator.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="islice-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="islice-__iter__"><strong>__iter__</strong></a>(self, /)</dt><dd><tt>Implement&nbsp;iter(self).</tt></dd></dl>
+
+<dl><dt><a name="islice-__next__"><strong>__next__</strong></a>(self, /)</dt><dd><tt>Implement&nbsp;next(self).</tt></dd></dl>
+
+<dl><dt><a name="islice-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Return&nbsp;state&nbsp;information&nbsp;for&nbsp;pickling.</tt></dd></dl>
+
+<dl><dt><a name="islice-__setstate__"><strong>__setstate__</strong></a>(...)</dt><dd><tt>Set&nbsp;state&nbsp;information&nbsp;for&nbsp;unpickling.</tt></dd></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="islice-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><strong>izip</strong> = <a name="izip">class zip</a>(<a href="builtins.html#object">object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>zip(iter1&nbsp;[,iter2&nbsp;[...]])&nbsp;--&gt;&nbsp;zip&nbsp;object<br>
+&nbsp;<br>
+Return&nbsp;a&nbsp;zip&nbsp;object&nbsp;whose&nbsp;.<a href="#izip-__next__">__next__</a>()&nbsp;method&nbsp;returns&nbsp;a&nbsp;tuple&nbsp;where<br>
+the&nbsp;i-th&nbsp;element&nbsp;comes&nbsp;from&nbsp;the&nbsp;i-th&nbsp;iterable&nbsp;argument.&nbsp;&nbsp;The&nbsp;.<a href="#izip-__next__">__next__</a>()<br>
+method&nbsp;continues&nbsp;until&nbsp;the&nbsp;shortest&nbsp;iterable&nbsp;in&nbsp;the&nbsp;argument&nbsp;sequence<br>
+is&nbsp;exhausted&nbsp;and&nbsp;then&nbsp;it&nbsp;raises&nbsp;StopIteration.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="zip-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="zip-__iter__"><strong>__iter__</strong></a>(self, /)</dt><dd><tt>Implement&nbsp;iter(self).</tt></dd></dl>
+
+<dl><dt><a name="zip-__next__"><strong>__next__</strong></a>(self, /)</dt><dd><tt>Implement&nbsp;next(self).</tt></dd></dl>
+
+<dl><dt><a name="zip-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Return&nbsp;state&nbsp;information&nbsp;for&nbsp;pickling.</tt></dd></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="zip-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+</td></tr></table> <dl><dt><a name="-lineout"><strong>lineout</strong></a>(x)</dt></dl>
+ <dl><dt><a name="-lstrip"><strong>lstrip</strong></a>(iterable, chars=None)</dt></dl>
+ <dl><dt><a name="-max"><strong>max</strong></a>(iterable, **kwargs)</dt></dl>
+ <dl><dt><a name="-min"><strong>min</strong></a>(iterable, **kwargs)</dt></dl>
+ <dl><dt><a name="-netcat"><strong>netcat</strong></a>(to_send, host, port)</dt></dl>
+ <dl><dt><a name="-netwrite"><strong>netwrite</strong></a>(to_send, host, port)</dt></dl>
+ <dl><dt><a name="-passed"><strong>passed</strong></a>(x)</dt></dl>
+ <dl><dt><a name="-pbatch"><strong>pbatch</strong></a>(l, n=10)</dt><dd><tt>Split&nbsp;input&nbsp;sequence&nbsp;into&nbsp;batches&nbsp;of&nbsp;`n`&nbsp;elements.<br>
+:param&nbsp;l:&nbsp;Input&nbsp;sequence<br>
+:param&nbsp;n:&nbsp;Length&nbsp;of&nbsp;output&nbsp;batches&nbsp;(lists)<br>
+:return:&nbsp;Sequence&nbsp;of&nbsp;lists&nbsp;of&nbsp;`n`&nbsp;elements</tt></dd></dl>
+ <dl><dt><a name="-pconcat"><strong>pconcat</strong></a>(l)</dt></dl>
+ <dl><dt><a name="-pcycle"><strong>pcycle</strong></a>(l)</dt><dd><tt>Infinitely&nbsp;cycle&nbsp;the&nbsp;input&nbsp;sequence<br>
+:param&nbsp;l:&nbsp;input&nbsp;pipe&nbsp;generator<br>
+:return:&nbsp;infinite&nbsp;datastream</tt></dd></dl>
+ <dl><dt><a name="-permutations"><strong>permutations</strong></a>(iterable, r=None)</dt></dl>
+ <dl><dt><a name="-pexec"><strong>pexec</strong></a>(l, func=None, convert_to_list=False)</dt><dd><tt>Execute&nbsp;function&nbsp;func,&nbsp;passing&nbsp;the&nbsp;pipe&nbsp;sequence&nbsp;as&nbsp;an&nbsp;argument<br>
+:param&nbsp;func:&nbsp;Function&nbsp;to&nbsp;execute,&nbsp;must&nbsp;accept&nbsp;1&nbsp;iterator&nbsp;as&nbsp;parameter.<br>
+:param&nbsp;convert_to_list:&nbsp;Convert&nbsp;pipe&nbsp;to&nbsp;list&nbsp;before&nbsp;passing&nbsp;it&nbsp;to&nbsp;function.&nbsp;If&nbsp;`func`&nbsp;is&nbsp;`None`,&nbsp;iterator&nbsp;is&nbsp;converted&nbsp;to&nbsp;list&nbsp;anyway.<br>
+:return:&nbsp;result&nbsp;of&nbsp;func</tt></dd></dl>
+ <dl><dt><a name="-pforeach"><strong>pforeach</strong></a>(l, func)</dt><dd><tt>Execute&nbsp;given&nbsp;function&nbsp;on&nbsp;each&nbsp;element&nbsp;in&nbsp;the&nbsp;pipe<br>
+:param&nbsp;l:&nbsp;datastream<br>
+:param&nbsp;func:&nbsp;function&nbsp;to&nbsp;be&nbsp;called&nbsp;on&nbsp;each&nbsp;element</tt></dd></dl>
+ <dl><dt><a name="-pprint"><strong>pprint</strong></a>(l)</dt><dd><tt>Print&nbsp;the&nbsp;values&nbsp;of&nbsp;a&nbsp;finite&nbsp;pipe&nbsp;generator&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;copy&nbsp;of&nbsp;it.&nbsp;It&nbsp;has&nbsp;to&nbsp;convert&nbsp;generator&nbsp;into&nbsp;in-memory<br>
+list,&nbsp;so&nbsp;better&nbsp;not&nbsp;to&nbsp;use&nbsp;it&nbsp;with&nbsp;big&nbsp;data.&nbsp;Use&nbsp;`seq&nbsp;|&nbsp;tee&nbsp;...`&nbsp;instead.<br>
+:param&nbsp;l:&nbsp;input&nbsp;pipe&nbsp;generator<br>
+:return:&nbsp;the&nbsp;same&nbsp;generator</tt></dd></dl>
+ <dl><dt><a name="-psave"><strong>psave</strong></a>(datastream, filename)</dt><dd><tt>Save&nbsp;whole&nbsp;datastream&nbsp;into&nbsp;a&nbsp;file&nbsp;for&nbsp;later&nbsp;use<br>
+:param&nbsp;datastream:&nbsp;Datastream<br>
+:param&nbsp;filename:&nbsp;Filename</tt></dd></dl>
+ <dl><dt><a name="-pshuffle"><strong>pshuffle</strong></a>(l)</dt><dd><tt>Shuffle&nbsp;a&nbsp;given&nbsp;pipe.<br>
+In&nbsp;the&nbsp;current&nbsp;implementation,&nbsp;it&nbsp;has&nbsp;to&nbsp;store&nbsp;the&nbsp;whole&nbsp;datastream&nbsp;into&nbsp;memory&nbsp;as&nbsp;a&nbsp;list,&nbsp;in&nbsp;order&nbsp;to&nbsp;perform&nbsp;shuffle.<br>
+Please&nbsp;not,&nbsp;that&nbsp;the&nbsp;idiom&nbsp;[1,2,3]&nbsp;|&nbsp;pshuffle()&nbsp;|&nbsp;pcycle()&nbsp;will&nbsp;return&nbsp;the&nbsp;same&nbsp;order&nbsp;of&nbsp;the&nbsp;shuffled&nbsp;sequence&nbsp;(eg.&nbsp;something<br>
+like&nbsp;[2,1,3,2,1,3,...]),&nbsp;if&nbsp;you&nbsp;want&nbsp;proper&nbsp;infinite&nbsp;shuffle&nbsp;use&nbsp;`infshuffle()`&nbsp;instead.<br>
+:param&nbsp;l:&nbsp;input&nbsp;pipe&nbsp;generator<br>
+:return:&nbsp;list&nbsp;of&nbsp;elements&nbsp;of&nbsp;the&nbsp;datastream&nbsp;in&nbsp;a&nbsp;shuffled&nbsp;order</tt></dd></dl>
+ <dl><dt><a name="-puniq"><strong>puniq</strong></a>(l)</dt></dl>
+ <dl><dt><a name="-reverse"><strong>reverse</strong></a>(iterable)</dt></dl>
+ <dl><dt><a name="-rstrip"><strong>rstrip</strong></a>(iterable, chars=None)</dt></dl>
+ <dl><dt><a name="-run_with"><strong>run_with</strong></a>(iterable, func)</dt></dl>
+ <dl><dt><a name="-select"><strong>select</strong></a>(iterable, selector)</dt></dl>
+ <dl><dt><a name="-skip"><strong>skip</strong></a>(iterable, qte)</dt><dd><tt>Skip&nbsp;qte&nbsp;elements&nbsp;in&nbsp;the&nbsp;given&nbsp;iterable,&nbsp;then&nbsp;yield&nbsp;others.</tt></dd></dl>
+ <dl><dt><a name="-skip_while"><strong>skip_while</strong></a>(iterable, predicate)</dt></dl>
+ <dl><dt><a name="-sort"><strong>sort</strong></a>(iterable, **kwargs)</dt></dl>
+ <dl><dt><a name="-stdout"><strong>stdout</strong></a>(x)</dt></dl>
+ <dl><dt><a name="-strip"><strong>strip</strong></a>(iterable, chars=None)</dt></dl>
+ <dl><dt><a name="-t"><strong>t</strong></a>(iterable, y)</dt></dl>
+ <dl><dt><a name="-tail"><strong>tail</strong></a>(iterable, qte)</dt><dd><tt>Yield&nbsp;qte&nbsp;of&nbsp;elements&nbsp;in&nbsp;the&nbsp;given&nbsp;iterable.</tt></dd></dl>
+ <dl><dt><a name="-take"><strong>take</strong></a>(iterable, qte)</dt><dd><tt>Yield&nbsp;qte&nbsp;of&nbsp;elements&nbsp;in&nbsp;the&nbsp;given&nbsp;iterable.</tt></dd></dl>
+ <dl><dt><a name="-take_while"><strong>take_while</strong></a>(iterable, predicate)</dt></dl>
+ <dl><dt><a name="-tee"><strong>tee</strong></a>(iterable)</dt></dl>
+ <dl><dt><a name="-to_type"><strong>to_type</strong></a>(x, t)</dt></dl>
+ <dl><dt><a name="-transpose"><strong>transpose</strong></a>(iterable)</dt></dl>
+ <dl><dt><a name="-traverse"><strong>traverse</strong></a>(args)</dt></dl>
+ <dl><dt><a name="-uniq"><strong>uniq</strong></a>(iterable)</dt><dd><tt>Deduplicate&nbsp;consecutive&nbsp;duplicate&nbsp;values.</tt></dd></dl>
+ <dl><dt><a name="-where"><strong>where</strong></a>(iterable, predicate)</dt></dl>
+</td></tr></table>
+</body></html>

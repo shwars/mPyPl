@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module mPyPl.video</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="mPyPl.html"><font color="#ffffff">mPyPl</font></a>.video</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cwinapp%5Cminiconda3%5Clib%5Csite-packages%5Cmpypl%5Cvideo.py">c:\winapp\miniconda3\lib\site-packages\mpypl\video.py</a></font></td></tr></table>
+    <p><tt>#&nbsp;Video&nbsp;processing&nbsp;functions</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="cv2.cv2.html">cv2.cv2</a><br>
+</td><td width="25%" valign=top><a href="math.html">math</a><br>
+</td><td width="25%" valign=top><a href="numpy.html">numpy</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-isdir"><strong>isdir</strong></a> = _isdir(path, /)</dt><dd><tt>Return&nbsp;true&nbsp;if&nbsp;the&nbsp;pathname&nbsp;refers&nbsp;to&nbsp;an&nbsp;existing&nbsp;directory.</tt></dd></dl>
+ <dl><dt><a name="-load_video"><strong>load_video</strong></a>(video, video_size=(100, 100), squarecrop=False, fps=25, maxlength=5, use_cache=False)</dt><dd><tt>Load&nbsp;video&nbsp;content&nbsp;into&nbsp;`np.array.`.&nbsp;This&nbsp;is&nbsp;most&nbsp;frequently&nbsp;used&nbsp;to&nbsp;load&nbsp;video&nbsp;files&nbsp;for&nbsp;further&nbsp;processing&nbsp;in&nbsp;a<br>
+pipeline&nbsp;like&nbsp;this:<br>
+`get_datastream(...)&nbsp;|&nbsp;apply('filename','video',load_video)&nbsp;|&nbsp;...`</tt></dd></dl>
+ <dl><dt><a name="-videosource"><strong>videosource</strong></a>(fname, video_size=(100, 100), mode='rgb')</dt><dd><tt>Produce&nbsp;a&nbsp;stream&nbsp;of&nbsp;video&nbsp;frames&nbsp;from&nbsp;a&nbsp;given&nbsp;input&nbsp;file.<br>
+:param&nbsp;fname:&nbsp;input&nbsp;file&nbsp;name&nbsp;(video)<br>
+:param&nbsp;video_size:&nbsp;tuple&nbsp;showing&nbsp;the&nbsp;size&nbsp;of&nbsp;the&nbsp;video&nbsp;frames&nbsp;`(width,height)`<br>
+:param&nbsp;mode:&nbsp;mode&nbsp;used&nbsp;to&nbsp;open&nbsp;the&nbsp;file.&nbsp;Default&nbsp;is&nbsp;`'rgb'`<br>
+:return:&nbsp;pipe&nbsp;stream&nbsp;of&nbsp;video&nbsp;frames</tt></dd></dl>
+ <dl><dt><a name="-videosource_chunked"><strong>videosource_chunked</strong></a>(fname, frames_per_chunk=25, video_size=(100, 100), mode='rgb')</dt><dd><tt>Produce&nbsp;a&nbsp;stream&nbsp;of&nbsp;video&nbsp;chunks&nbsp;of&nbsp;a&nbsp;given&nbsp;size.<br>
+:param&nbsp;fname:&nbsp;input&nbsp;filename<br>
+:param&nbsp;frames_per_chunk:&nbsp;number&nbsp;of&nbsp;frames&nbsp;per&nbsp;chunk.&nbsp;Defaults&nbsp;to&nbsp;25,&nbsp;meaning&nbsp;1&nbsp;second&nbsp;of&nbsp;video&nbsp;under&nbsp;25&nbsp;fps.<br>
+:param&nbsp;video_size:&nbsp;tuple&nbsp;showing&nbsp;the&nbsp;size&nbsp;of&nbsp;the&nbsp;video&nbsp;frames&nbsp;`(width,height)`<br>
+:param&nbsp;mode:&nbsp;mode&nbsp;used&nbsp;to&nbsp;open&nbsp;the&nbsp;file.&nbsp;Default&nbsp;is&nbsp;`'rgb'`<br>
+:return:&nbsp;pipe&nbsp;stream&nbsp;of&nbsp;video&nbsp;chunks</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Pipe functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-chunk_slide"><strong>chunk_slide</strong></a>(datastream, chunk_size)</dt></dl>
+ <dl><dt><a name="-collect_video"><strong>collect_video</strong></a>(datastream, filename, video_size=None, codec=1935959654)</dt><dd><tt>Collect&nbsp;a&nbsp;video&nbsp;file&nbsp;from&nbsp;a&nbsp;sequence&nbsp;of&nbsp;frames&nbsp;of&nbsp;video&nbsp;fragments.<br>
+:param&nbsp;datastream:&nbsp;sequence&nbsp;of&nbsp;images&nbsp;or&nbsp;video&nbsp;fragments<br>
+:param&nbsp;filename:&nbsp;output&nbsp;file&nbsp;name<br>
+:param&nbsp;video_size:&nbsp;size&nbsp;of&nbsp;the&nbsp;video.&nbsp;If&nbsp;`None`&nbsp;(which&nbsp;is&nbsp;the&nbsp;default)&nbsp;-&nbsp;video&nbsp;size&nbsp;is&nbsp;determined&nbsp;from&nbsp;the&nbsp;dimensions&nbsp;of&nbsp;the&nbsp;input&nbsp;`np.array`<br>
+:param&nbsp;codec:&nbsp;OpenCV&nbsp;codec&nbsp;to&nbsp;use.&nbsp;Default&nbsp;is&nbsp;`cv2.VideoWriter_fourcc(*"ffds")`</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>altsep</strong> = '/'<br>
+<strong>curdir</strong> = '.'<br>
+<strong>defpath</strong> = r'.;C:\bin'<br>
+<strong>devnull</strong> = 'nul'<br>
+<strong>extsep</strong> = '.'<br>
+<strong>pardir</strong> = '..'<br>
+<strong>pathsep</strong> = ';'<br>
+<strong>sep</strong> = r'\'<br>
+<strong>supports_unicode_filenames</strong> = True</td></tr></table>
+</body></html>

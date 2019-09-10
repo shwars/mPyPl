@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module mPyPl.xmlstream</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="mPyPl.html"><font color="#ffffff">mPyPl</font></a>.xmlstream</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cwinapp%5Cminiconda3%5Clib%5Csite-packages%5Cmpypl%5Cxmlstream.py">c:\winapp\miniconda3\lib\site-packages\mpypl\xmlstream.py</a></font></td></tr></table>
+    <p><tt>#&nbsp;mPyPl&nbsp;-&nbsp;Monadic&nbsp;Pipeline&nbsp;Library&nbsp;for&nbsp;Python<br>
+#&nbsp;<a href="http://github.com/shwars/mPyPl">http://github.com/shwars/mPyPl</a></tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="enum.html">enum</a><br>
+<a href="xml.etree.ElementTree.html">xml.etree.ElementTree</a><br>
+</td><td width="25%" valign=top><a href="json.html">json</a><br>
+<a href="numpy.html">numpy</a><br>
+</td><td width="25%" valign=top><a href="os.html">os</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-get_pascal_annotations"><strong>get_pascal_annotations</strong></a>(dir='Annotations', ext='.xml', skip_fields=[])</dt><dd><tt>Return&nbsp;stream&nbsp;of&nbsp;bounding&nbsp;box&nbsp;annotations&nbsp;from&nbsp;Pascal&nbsp;VOC&nbsp;annotation&nbsp;directory<br>
+:param&nbsp;dir:&nbsp;Directory&nbsp;where&nbsp;XML&nbsp;files&nbsp;with&nbsp;annotations&nbsp;are,&nbsp;defaults&nbsp;to&nbsp;'Annotations'<br>
+:param&nbsp;ext:&nbsp;Extension,&nbsp;defaults&nbsp;to&nbsp;'.xml'<br>
+:param&nbsp;skip_fields:&nbsp;Fields&nbsp;to&nbsp;skip<br>
+:return:&nbsp;Datastream</tt></dd></dl>
+ <dl><dt><a name="-get_xmlstream_from_dir"><strong>get_xmlstream_from_dir</strong></a>(dir, ext='.xml', list_fields=[], flatten_fields=[], skip_fields=[], populate_aux_fields=False)</dt><dd><tt>Returns&nbsp;the&nbsp;stream&nbsp;of&nbsp;XML&nbsp;objects&nbsp;retrieved&nbsp;from&nbsp;files&nbsp;in&nbsp;the&nbsp;given&nbsp;directory.&nbsp;This&nbsp;can&nbsp;be&nbsp;used,&nbsp;for&nbsp;example,&nbsp;for<br>
+reading&nbsp;Pascal&nbsp;VOC&nbsp;annotations.<br>
+:param&nbsp;dir:&nbsp;Directory&nbsp;of&nbsp;XML&nbsp;files&nbsp;to&nbsp;use<br>
+:param&nbsp;list_fields:&nbsp;fields&nbsp;to&nbsp;be&nbsp;treated&nbsp;as&nbsp;lists&nbsp;(useful&nbsp;is&nbsp;we&nbsp;know&nbsp;that&nbsp;certain&nbsp;values&nbsp;will&nbsp;be&nbsp;present&nbsp;more&nbsp;than&nbsp;once)<br>
+:param&nbsp;flatten_fields:&nbsp;fields&nbsp;to&nbsp;be&nbsp;flattened<br>
+:param&nbsp;skip_fields:&nbsp;fields&nbsp;to&nbsp;be&nbsp;skipped<br>
+:return:&nbsp;A&nbsp;stream&nbsp;of&nbsp;`mdict`s&nbsp;with&nbsp;fields&nbsp;corresponding&nbsp;to&nbsp;XML&nbsp;elements</tt></dd></dl>
+ <dl><dt><a name="-populate_mdict_from_xml"><strong>populate_mdict_from_xml</strong></a>(xml, m, prefix='', list_fields=[], flatten_fields=[], skip_fields=[])</dt><dd><tt>Construct&nbsp;`mdict`&nbsp;object&nbsp;from&nbsp;part&nbsp;of&nbsp;XML&nbsp;tree<br>
+:param&nbsp;xml:&nbsp;part&nbsp;of&nbsp;`ElementTree`&nbsp;XML&nbsp;DOM<br>
+:param&nbsp;prefix:&nbsp;prefix&nbsp;to&nbsp;use&nbsp;for&nbsp;each&nbsp;field&nbsp;(useful&nbsp;for&nbsp;recursive&nbsp;calls)<br>
+:param&nbsp;list_fields:&nbsp;fields&nbsp;to&nbsp;be&nbsp;treated&nbsp;as&nbsp;lists&nbsp;(useful&nbsp;is&nbsp;we&nbsp;know&nbsp;that&nbsp;certain&nbsp;values&nbsp;will&nbsp;be&nbsp;present&nbsp;more&nbsp;than&nbsp;once)<br>
+:param&nbsp;flatten_fields:&nbsp;fields&nbsp;to&nbsp;be&nbsp;flattened<br>
+:param&nbsp;skip_fields:&nbsp;fields&nbsp;to&nbsp;be&nbsp;skipped<br>
+:return:&nbsp;mdict&nbsp;object</tt></dd></dl>
+</td></tr></table>
+</body></html>

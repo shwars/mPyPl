@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module mPyPl.utils.coreutils</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="mPyPl.html"><font color="#ffffff">mPyPl</font></a>.<a href="mPyPl.utils.html"><font color="#ffffff">utils</font></a>.coreutils</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cwinapp%5Cminiconda3%5Clib%5Csite-packages%5Cmpypl%5Cutils%5Ccoreutils.py">c:\winapp\miniconda3\lib\site-packages\mpypl\utils\coreutils.py</a></font></td></tr></table>
+    <p><tt>#&nbsp;mPyPl&nbsp;-&nbsp;Monadic&nbsp;Pipeline&nbsp;Library&nbsp;for&nbsp;Python<br>
+#&nbsp;<a href="http://github.com/shwars/mPyPl">http://github.com/shwars/mPyPl</a></tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="numpy.html">numpy</a><br>
+</td><td width="25%" valign=top><a href="types.html">types</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-enlist"><strong>enlist</strong></a>(x)</dt><dd><tt>Make&nbsp;sure&nbsp;that&nbsp;the&nbsp;specified&nbsp;value&nbsp;is&nbsp;a&nbsp;list.&nbsp;If&nbsp;it's&nbsp;a&nbsp;list&nbsp;-&nbsp;returns&nbsp;it&nbsp;unchanged.&nbsp;If&nbsp;it's&nbsp;a&nbsp;value,&nbsp;returns<br>
+&nbsp;a&nbsp;list&nbsp;with&nbsp;this&nbsp;value.<br>
+:param&nbsp;x:&nbsp;input&nbsp;value<br>
+:return:&nbsp;list</tt></dd></dl>
+ <dl><dt><a name="-entuple"><strong>entuple</strong></a>(x, n=2)</dt><dd><tt>Make&nbsp;sure&nbsp;given&nbsp;value&nbsp;is&nbsp;a&nbsp;tuple.&nbsp;It&nbsp;is&nbsp;useful,&nbsp;for&nbsp;example,&nbsp;when&nbsp;you&nbsp;want&nbsp;to&nbsp;provide&nbsp;dimentions&nbsp;of&nbsp;an&nbsp;image&nbsp;either<br>
+as&nbsp;a&nbsp;tuple,&nbsp;or&nbsp;as&nbsp;an&nbsp;int&nbsp;-&nbsp;in&nbsp;which&nbsp;case&nbsp;you&nbsp;can&nbsp;use&nbsp;`(w,h)&nbsp;=&nbsp;<a href="#-entuple">entuple</a>(x)`.<br>
+:param&nbsp;x:&nbsp;Either&nbsp;atomic&nbsp;value&nbsp;or&nbsp;a&nbsp;tuple.&nbsp;If&nbsp;the&nbsp;value&nbsp;is&nbsp;atomic,&nbsp;it&nbsp;is&nbsp;converted&nbsp;to&nbsp;a&nbsp;tuple&nbsp;of&nbsp;length&nbsp;`n`.&nbsp;It&nbsp;the&nbsp;value<br>
+is&nbsp;a&nbsp;tuple&nbsp;-&nbsp;it&nbsp;is&nbsp;inchanged<br>
+:param&nbsp;n:&nbsp;Number&nbsp;of&nbsp;elements&nbsp;in&nbsp;a&nbsp;tuple<br>
+:return:&nbsp;Tuple&nbsp;of&nbsp;a&nbsp;specified&nbsp;size</tt></dd></dl>
+ <dl><dt><a name="-getattritem"><strong>getattritem</strong></a>(o, a)</dt><dd><tt>Get&nbsp;either&nbsp;attribute&nbsp;or&nbsp;item&nbsp;`a`&nbsp;from&nbsp;a&nbsp;given&nbsp;object&nbsp;`o`.&nbsp;Supports&nbsp;multiple&nbsp;evaluations,&nbsp;for&nbsp;example<br>
+`<a href="#-getattritem">getattritem</a>(o,'one.two')`&nbsp;would&nbsp;get&nbsp;`o.one.two`,&nbsp;`o['one']['two']`,&nbsp;etc.<br>
+:param&nbsp;o:&nbsp;Object<br>
+:param&nbsp;a:&nbsp;Attribute&nbsp;or&nbsp;Item&nbsp;index.&nbsp;Can&nbsp;contain&nbsp;`.`,&nbsp;in&nbsp;which&nbsp;case&nbsp;the&nbsp;final&nbsp;value&nbsp;is&nbsp;obtained.<br>
+:return:&nbsp;Value</tt></dd></dl>
+ <dl><dt><a name="-normalize_npy"><strong>normalize_npy</strong></a>(x, interval=(0, 1))</dt><dd><tt>Normalize&nbsp;specified&nbsp;numpy&nbsp;array&nbsp;to&nbsp;be&nbsp;in&nbsp;the&nbsp;given&nbsp;inteval<br>
+:param&nbsp;x:&nbsp;Input&nbsp;array<br>
+:param&nbsp;interval:&nbsp;Interval&nbsp;tuple,&nbsp;defaults&nbsp;to&nbsp;(0,1)<br>
+:return:&nbsp;Normalized&nbsp;array</tt></dd></dl>
+ <dl><dt><a name="-print_decorate"><strong>print_decorate</strong></a>(msg, expr)</dt><dd><tt>Helper&nbsp;function&nbsp;to&nbsp;make&nbsp;a&nbsp;print&nbsp;decoration&nbsp;around&nbsp;lambda&nbsp;expression.&nbsp;It&nbsp;will&nbsp;print&nbsp;`msg`,&nbsp;and&nbsp;then&nbsp;return<br>
+the&nbsp;result&nbsp;of&nbsp;`expr`.&nbsp;If&nbsp;it&nbsp;typically&nbsp;used&nbsp;in&nbsp;expressions&nbsp;like<br>
+`lambda&nbsp;x:&nbsp;<a href="#-print_decorate">print_decorate</a>("Processing&nbsp;{}".format(x),&nbsp;do_smth_with(x))`<br>
+:param&nbsp;msg:&nbsp;Message&nbsp;to&nbsp;print<br>
+:param&nbsp;expr:&nbsp;Expression&nbsp;to&nbsp;compute<br>
+:return:&nbsp;expr</tt></dd></dl>
+ <dl><dt><a name="-unzip_list"><strong>unzip_list</strong></a>(x)</dt></dl>
+</td></tr></table>
+</body></html>

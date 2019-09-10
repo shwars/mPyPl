@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: class mdict</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><strong>mPyPl.mdict</strong> = <a name="mPyPl.mdict">class mdict</a>(<a href="builtins.html#dict">builtins.dict</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>mPyPl.mdict(*args,&nbsp;**kwargs)<br>
+&nbsp;<br>
+Base&nbsp;Dictionary&nbsp;class&nbsp;that&nbsp;flows&nbsp;through&nbsp;the&nbsp;pipeline.&nbsp;It&nbsp;supports&nbsp;different&nbsp;evaluation&nbsp;strategies,&nbsp;including<br>
+lazy&nbsp;evaluation&nbsp;with&nbsp;or&nbsp;without&nbsp;memoization.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="mPyPl.mdict.html#mdict">mdict</a></dd>
+<dd><a href="builtins.html#dict">builtins.dict</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="mdict-__getitem__"><strong>__getitem__</strong></a>(self, item)</dt><dd><tt>x.<a href="#mPyPl.mdict-__getitem__">__getitem__</a>(y)&nbsp;&lt;==&gt;&nbsp;x[y]</tt></dd></dl>
+
+<dl><dt><a name="mdict-__init__"><strong>__init__</strong></a>(self, *args, **kwargs)</dt><dd><tt>Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<dl><dt><a name="mdict-as_csv"><strong>as_csv</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="mdict-as_csv_header"><strong>as_csv_header</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="mdict-as_float"><strong>as_float</strong></a>(self, item)</dt></dl>
+
+<dl><dt><a name="mdict-as_int"><strong>as_int</strong></a>(self, item)</dt></dl>
+
+<dl><dt><a name="mdict-clone"><strong>clone</strong></a>(self, fields=None)</dt></dl>
+
+<dl><dt><a name="mdict-get"><strong>get</strong></a>(self, item, default=None)</dt><dd><tt>Return&nbsp;the&nbsp;value&nbsp;for&nbsp;key&nbsp;if&nbsp;key&nbsp;is&nbsp;in&nbsp;the&nbsp;dictionary,&nbsp;else&nbsp;default.</tt></dd></dl>
+
+<dl><dt><a name="mdict-set"><strong>set</strong></a>(self, key, value, eval_strategy=None)</dt><dd><tt>Set&nbsp;the&nbsp;value&nbsp;of&nbsp;a&nbsp;slot&nbsp;and&nbsp;optionally&nbsp;its&nbsp;evaluation&nbsp;strategy</tt></dd></dl>
+
+<dl><dt><a name="mdict-set_eval_strategy"><strong>set_eval_strategy</strong></a>(self, key, eval_strategy)</dt></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="mdict-extract_from_object"><strong>extract_from_object</strong></a>(x, fields)</dt><dd><tt>Create&nbsp;new&nbsp;`mdict`,&nbsp;extracting&nbsp;specified&nbsp;fields&nbsp;from&nbsp;a&nbsp;given&nbsp;object&nbsp;or&nbsp;dictionary<br>
+:param&nbsp;x:&nbsp;Object&nbsp;to&nbsp;use<br>
+:param&nbsp;fields:&nbsp;List&nbsp;of&nbsp;fields&nbsp;to&nbsp;extract.&nbsp;If&nbsp;a&nbsp;field&nbsp;contains&nbsp;`.`,&nbsp;complex&nbsp;extraction&nbsp;is&nbsp;performed.<br>
+:return:&nbsp;new&nbsp;`mdict`&nbsp;containing&nbsp;all&nbsp;specified&nbsp;fields</tt></dd></dl>
+
+<dl><dt><a name="mdict-from_json"><strong>from_json</strong></a>(fn)</dt></dl>
+
+<dl><dt><a name="mdict-inspect"><strong>inspect</strong></a>(md, message='Inspecting mdict')</dt></dl>
+
+<dl><dt><a name="mdict-to_mdict"><strong>to_mdict</strong></a>(x, include_fields=None, exclude_fields=None)</dt><dd><tt>Convert&nbsp;an&nbsp;arbitrary&nbsp;dictionary&nbsp;to&nbsp;`mdict`<br>
+:param&nbsp;x:&nbsp;A&nbsp;dictionary<br>
+:return:&nbsp;`mdict`&nbsp;object&nbsp;with&nbsp;the&nbsp;same&nbsp;fields</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="builtins.html#dict">builtins.dict</a>:<br>
+<dl><dt><a name="mdict-__contains__"><strong>__contains__</strong></a>(self, key, /)</dt><dd><tt>True&nbsp;if&nbsp;the&nbsp;dictionary&nbsp;has&nbsp;the&nbsp;specified&nbsp;key,&nbsp;else&nbsp;False.</tt></dd></dl>
+
+<dl><dt><a name="mdict-__delitem__"><strong>__delitem__</strong></a>(self, key, /)</dt><dd><tt>Delete&nbsp;self[key].</tt></dd></dl>
+
+<dl><dt><a name="mdict-__eq__"><strong>__eq__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self==value.</tt></dd></dl>
+
+<dl><dt><a name="mdict-__ge__"><strong>__ge__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;=value.</tt></dd></dl>
+
+<dl><dt><a name="mdict-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="mdict-__gt__"><strong>__gt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;value.</tt></dd></dl>
+
+<dl><dt><a name="mdict-__iter__"><strong>__iter__</strong></a>(self, /)</dt><dd><tt>Implement&nbsp;iter(self).</tt></dd></dl>
+
+<dl><dt><a name="mdict-__le__"><strong>__le__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;=value.</tt></dd></dl>
+
+<dl><dt><a name="mdict-__len__"><strong>__len__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;len(self).</tt></dd></dl>
+
+<dl><dt><a name="mdict-__lt__"><strong>__lt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;value.</tt></dd></dl>
+
+<dl><dt><a name="mdict-__ne__"><strong>__ne__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self!=value.</tt></dd></dl>
+
+<dl><dt><a name="mdict-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="mdict-__setitem__"><strong>__setitem__</strong></a>(self, key, value, /)</dt><dd><tt>Set&nbsp;self[key]&nbsp;to&nbsp;value.</tt></dd></dl>
+
+<dl><dt><a name="mdict-__sizeof__"><strong>__sizeof__</strong></a>(...)</dt><dd><tt>D.<a href="#mPyPl.mdict-__sizeof__">__sizeof__</a>()&nbsp;-&gt;&nbsp;size&nbsp;of&nbsp;D&nbsp;in&nbsp;memory,&nbsp;in&nbsp;bytes</tt></dd></dl>
+
+<dl><dt><a name="mdict-clear"><strong>clear</strong></a>(...)</dt><dd><tt>D.<a href="#mPyPl.mdict-clear">clear</a>()&nbsp;-&gt;&nbsp;None.&nbsp;&nbsp;Remove&nbsp;all&nbsp;items&nbsp;from&nbsp;D.</tt></dd></dl>
+
+<dl><dt><a name="mdict-copy"><strong>copy</strong></a>(...)</dt><dd><tt>D.<a href="#mPyPl.mdict-copy">copy</a>()&nbsp;-&gt;&nbsp;a&nbsp;shallow&nbsp;copy&nbsp;of&nbsp;D</tt></dd></dl>
+
+<dl><dt><a name="mdict-items"><strong>items</strong></a>(...)</dt><dd><tt>D.<a href="#mPyPl.mdict-items">items</a>()&nbsp;-&gt;&nbsp;a&nbsp;set-like&nbsp;object&nbsp;providing&nbsp;a&nbsp;view&nbsp;on&nbsp;D's&nbsp;items</tt></dd></dl>
+
+<dl><dt><a name="mdict-keys"><strong>keys</strong></a>(...)</dt><dd><tt>D.<a href="#mPyPl.mdict-keys">keys</a>()&nbsp;-&gt;&nbsp;a&nbsp;set-like&nbsp;object&nbsp;providing&nbsp;a&nbsp;view&nbsp;on&nbsp;D's&nbsp;keys</tt></dd></dl>
+
+<dl><dt><a name="mdict-pop"><strong>pop</strong></a>(...)</dt><dd><tt>D.<a href="#mPyPl.mdict-pop">pop</a>(k[,d])&nbsp;-&gt;&nbsp;v,&nbsp;remove&nbsp;specified&nbsp;key&nbsp;and&nbsp;return&nbsp;the&nbsp;corresponding&nbsp;value.<br>
+If&nbsp;key&nbsp;is&nbsp;not&nbsp;found,&nbsp;d&nbsp;is&nbsp;returned&nbsp;if&nbsp;given,&nbsp;otherwise&nbsp;KeyError&nbsp;is&nbsp;raised</tt></dd></dl>
+
+<dl><dt><a name="mdict-popitem"><strong>popitem</strong></a>(...)</dt><dd><tt>D.<a href="#mPyPl.mdict-popitem">popitem</a>()&nbsp;-&gt;&nbsp;(k,&nbsp;v),&nbsp;remove&nbsp;and&nbsp;return&nbsp;some&nbsp;(key,&nbsp;value)&nbsp;pair&nbsp;as&nbsp;a<br>
+2-tuple;&nbsp;but&nbsp;raise&nbsp;KeyError&nbsp;if&nbsp;D&nbsp;is&nbsp;empty.</tt></dd></dl>
+
+<dl><dt><a name="mdict-setdefault"><strong>setdefault</strong></a>(self, key, default=None, /)</dt><dd><tt>Insert&nbsp;key&nbsp;with&nbsp;a&nbsp;value&nbsp;of&nbsp;default&nbsp;if&nbsp;key&nbsp;is&nbsp;not&nbsp;in&nbsp;the&nbsp;dictionary.<br>
+&nbsp;<br>
+Return&nbsp;the&nbsp;value&nbsp;for&nbsp;key&nbsp;if&nbsp;key&nbsp;is&nbsp;in&nbsp;the&nbsp;dictionary,&nbsp;else&nbsp;default.</tt></dd></dl>
+
+<dl><dt><a name="mdict-update"><strong>update</strong></a>(...)</dt><dd><tt>D.<a href="#mPyPl.mdict-update">update</a>([E,&nbsp;]**F)&nbsp;-&gt;&nbsp;None.&nbsp;&nbsp;Update&nbsp;D&nbsp;from&nbsp;dict/iterable&nbsp;E&nbsp;and&nbsp;F.<br>
+If&nbsp;E&nbsp;is&nbsp;present&nbsp;and&nbsp;has&nbsp;a&nbsp;.<a href="#mPyPl.mdict-keys">keys</a>()&nbsp;method,&nbsp;then&nbsp;does:&nbsp;&nbsp;for&nbsp;k&nbsp;in&nbsp;E:&nbsp;D[k]&nbsp;=&nbsp;E[k]<br>
+If&nbsp;E&nbsp;is&nbsp;present&nbsp;and&nbsp;lacks&nbsp;a&nbsp;.<a href="#mPyPl.mdict-keys">keys</a>()&nbsp;method,&nbsp;then&nbsp;does:&nbsp;&nbsp;for&nbsp;k,&nbsp;v&nbsp;in&nbsp;E:&nbsp;D[k]&nbsp;=&nbsp;v<br>
+In&nbsp;either&nbsp;case,&nbsp;this&nbsp;is&nbsp;followed&nbsp;by:&nbsp;for&nbsp;k&nbsp;in&nbsp;F:&nbsp;&nbsp;D[k]&nbsp;=&nbsp;F[k]</tt></dd></dl>
+
+<dl><dt><a name="mdict-values"><strong>values</strong></a>(...)</dt><dd><tt>D.<a href="#mPyPl.mdict-values">values</a>()&nbsp;-&gt;&nbsp;an&nbsp;object&nbsp;providing&nbsp;a&nbsp;view&nbsp;on&nbsp;D's&nbsp;values</tt></dd></dl>
+
+<hr>
+Class methods inherited from <a href="builtins.html#dict">builtins.dict</a>:<br>
+<dl><dt><a name="mdict-fromkeys"><strong>fromkeys</strong></a>(iterable, value=None, /)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;a&nbsp;new&nbsp;dictionary&nbsp;with&nbsp;keys&nbsp;from&nbsp;iterable&nbsp;and&nbsp;values&nbsp;set&nbsp;to&nbsp;value.</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="builtins.html#dict">builtins.dict</a>:<br>
+<dl><dt><a name="mdict-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="builtins.html#dict">builtins.dict</a>:<br>
+<dl><dt><strong>__hash__</strong> = None</dl>
+
+</td></tr></table>
+</body></html>

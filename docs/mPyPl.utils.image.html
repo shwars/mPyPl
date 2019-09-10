@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module mPyPl.utils.image</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="mPyPl.html"><font color="#ffffff">mPyPl</font></a>.<a href="mPyPl.utils.html"><font color="#ffffff">utils</font></a>.image</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cwinapp%5Cminiconda3%5Clib%5Csite-packages%5Cmpypl%5Cutils%5Cimage.py">c:\winapp\miniconda3\lib\site-packages\mpypl\utils\image.py</a></font></td></tr></table>
+    <p><tt>#&nbsp;mPyPl&nbsp;-&nbsp;Monadic&nbsp;Pipeline&nbsp;Library&nbsp;for&nbsp;Python<br>
+#&nbsp;<a href="http://github.com/shwars/mPyPl">http://github.com/shwars/mPyPl</a></tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="cv2.cv2.html">cv2.cv2</a><br>
+</td><td width="25%" valign=top><a href="numpy.html">numpy</a><br>
+</td><td width="25%" valign=top><a href="matplotlib.pyplot.html">matplotlib.pyplot</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-calc_bounding_box"><strong>calc_bounding_box</strong></a>(img)</dt><dd><tt>Calculate&nbsp;bounding&nbsp;box&nbsp;of&nbsp;an&nbsp;image&nbsp;or&nbsp;mask.&nbsp;Bounding&nbsp;box&nbsp;surrounds&nbsp;non-zero&nbsp;pictures<br>
+:param&nbsp;img:&nbsp;Original&nbsp;image<br>
+:return:&nbsp;Bounding&nbsp;box&nbsp;in&nbsp;a&nbsp;form&nbsp;(x1,y1,x2,y2)</tt></dd></dl>
+ <dl><dt><a name="-ceil"><strong>ceil</strong></a>(x, /)</dt><dd><tt>Return&nbsp;the&nbsp;ceiling&nbsp;of&nbsp;x&nbsp;as&nbsp;an&nbsp;Integral.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;the&nbsp;smallest&nbsp;integer&nbsp;&gt;=&nbsp;x.</tt></dd></dl>
+ <dl><dt><a name="-im_resize"><strong>im_resize</strong></a>(frame, size)</dt><dd><tt>Resize&nbsp;an&nbsp;image,&nbsp;calculating&nbsp;one&nbsp;of&nbsp;the&nbsp;dimensions&nbsp;if&nbsp;needed<br>
+:param&nbsp;frame:&nbsp;Original&nbsp;image<br>
+:param&nbsp;size:&nbsp;Size&nbsp;in&nbsp;the&nbsp;form&nbsp;(Width,Height).&nbsp;If&nbsp;one&nbsp;of&nbsp;the&nbsp;parameters&nbsp;is&nbsp;None,&nbsp;it&nbsp;is&nbsp;calculated.&nbsp;If&nbsp;both&nbsp;are&nbsp;present,<br>
+image&nbsp;is&nbsp;stretched.&nbsp;If&nbsp;size&nbsp;is&nbsp;int&nbsp;-&nbsp;square&nbsp;image&nbsp;is&nbsp;assumed.&nbsp;If&nbsp;it&nbsp;is&nbsp;None&nbsp;-&nbsp;original&nbsp;image&nbsp;is&nbsp;returned<br>
+:return:&nbsp;Resized&nbsp;image</tt></dd></dl>
+ <dl><dt><a name="-im_resize_pad"><strong>im_resize_pad</strong></a>(img, size, pad_color=0)</dt><dd><tt>Resize&nbsp;an&nbsp;image&nbsp;with&nbsp;padding<br>
+:param&nbsp;img:&nbsp;Original&nbsp;image<br>
+:param&nbsp;size:&nbsp;Size&nbsp;in&nbsp;the&nbsp;form&nbsp;(Width,Height).&nbsp;Both&nbsp;should&nbsp;be&nbsp;present.&nbsp;If&nbsp;int&nbsp;is&nbsp;given,&nbsp;square&nbsp;image&nbsp;is&nbsp;assumed.<br>
+:return:&nbsp;Resized&nbsp;image</tt></dd></dl>
+ <dl><dt><a name="-im_tilecut"><strong>im_tilecut</strong></a>(img, tile_no=None, tile_size=None)</dt><dd><tt>Cut&nbsp;the&nbsp;image&nbsp;into&nbsp;a&nbsp;sequence&nbsp;of&nbsp;smaller&nbsp;(possibly&nbsp;overlapping)&nbsp;tiles.&nbsp;Either&nbsp;`tile_no`&nbsp;or&nbsp;`tile_size`&nbsp;should<br>
+be&nbsp;specified.<br>
+:param&nbsp;img:&nbsp;Source&nbsp;image<br>
+:param&nbsp;tile_no:&nbsp;Number&nbsp;of&nbsp;tiles.&nbsp;Either&nbsp;`None`,&nbsp;or&nbsp;int,&nbsp;or&nbsp;tuple&nbsp;(if&nbsp;number&nbsp;of&nbsp;tiles&nbsp;is&nbsp;different&nbsp;across&nbsp;x&nbsp;and&nbsp;y.<br>
+:param&nbsp;tile_size:&nbsp;Size&nbsp;of&nbsp;the&nbsp;tiles&nbsp;in&nbsp;pixels.&nbsp;Either&nbsp;`None`,&nbsp;or&nbsp;int,&nbsp;or&nbsp;tuple.<br>
+:return:&nbsp;Sequence&nbsp;of&nbsp;tiles.</tt></dd></dl>
+ <dl><dt><a name="-show_images"><strong>show_images</strong></a>(images, cols=1, titles=None)</dt><dd><tt>Show&nbsp;a&nbsp;list&nbsp;of&nbsp;images&nbsp;using&nbsp;matplotlib<br>
+:param&nbsp;images:&nbsp;list&nbsp;of&nbsp;images&nbsp;(or&nbsp;any&nbsp;sequence&nbsp;with&nbsp;len&nbsp;and&nbsp;indexing&nbsp;defined)<br>
+:param&nbsp;cols:&nbsp;number&nbsp;of&nbsp;columns&nbsp;to&nbsp;use<br>
+:param&nbsp;titles:&nbsp;list&nbsp;of&nbsp;titles&nbsp;to&nbsp;use&nbsp;or&nbsp;None</tt></dd></dl>
+</td></tr></table>
+</body></html>
