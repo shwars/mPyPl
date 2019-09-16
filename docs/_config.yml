@@ -1,1 +1,3 @@
 theme: jekyll-theme-cayman
+title: mPyPl - Monadic Pipeline Library for Python
+description: mPyPl is a library that simplifies all data-processing tasks in Python, by introducing a functional pipeline concept.

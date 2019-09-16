@@ -1,23 +1,23 @@
-cd ..\docs
+cd ..\docs\pydoc
+set pydoccmd=python ..\..\mpydoc\mpydoc.py
 echo ==== CORE ====
-python ..\mpydoc\mpydoc.py -w mPyPl.core
-python ..\mpydoc\mpydoc.py -w mPyPl.funcs
-python ..\mpydoc\mpydoc.py -w mPyPl.jsonstream
-python ..\mpydoc\mpydoc.py -w mPyPl.keras
-python ..\mpydoc\mpydoc.py -w mPyPl.mdict
-python ..\mpydoc\mpydoc.py -w mPyPl.multiclass_datastream
-python ..\mpydoc\mpydoc.py -w mPyPl.sink
-python ..\mpydoc\mpydoc.py -w mPyPl.sources
-python ..\mpydoc\mpydoc.py -w mPyPl.video
-python ..\mpydoc\mpydoc.py -w mPyPl.xmlstream
+%pydoccmd% -w mPyPl.core
+%pydoccmd% -w mPyPl.funcs
+%pydoccmd% -w mPyPl.jsonstream
+%pydoccmd% -w mPyPl.keras
+%pydoccmd% -w mPyPl.mdict
+%pydoccmd% -w mPyPl.multiclass_datastream
+%pydoccmd% -w mPyPl.sink
+%pydoccmd% -w mPyPl.sources
+%pydoccmd% -w mPyPl.video
+%pydoccmd% -w mPyPl.xmlstream
 echo ==== UTILS ====
-python ..\mpydoc\mpydoc.py -w mPyPl.utils.coreutils
-python ..\mpydoc\mpydoc.py -w mPyPl.utils.fileutils
-python ..\mpydoc\mpydoc.py -w mPyPl.utils.flowutils
-python ..\mpydoc\mpydoc.py -w mPyPl.utils.image
-python ..\mpydoc\mpydoc.py -w mPyPl.utils.lambdas
-python ..\mpydoc\mpydoc.py -w mPyPl.utils.pipeutils
-python ..\mpydoc\mpydoc.py2 -w mPyPl.utils.video
+%pydoccmd% -w mPyPl.utils.coreutils
+%pydoccmd% -w mPyPl.utils.fileutils
+%pydoccmd% -w mPyPl.utils.flowutils
+%pydoccmd% -w mPyPl.utils.image
+%pydoccmd% -w mPyPl.utils.lambdas
+%pydoccmd% -w mPyPl.utils.pipeutils
+%pydoccmd% -w mPyPl.utils.video
 echo ==== MAIN ====
-python ..\mpydoc\mpydoc.py -w mPyPl
-
+%pydoccmd% -w mPyPl

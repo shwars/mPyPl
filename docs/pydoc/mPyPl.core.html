@@ -1,33 +1,36 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<html><head><title>Python: package mPyPl</title>
+<html><head><title>Python: module mPyPl.core</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head><body bgcolor="#f0f0f8">
 
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
 <tr bgcolor="#7799ee">
 <td valign=bottom>&nbsp;<br>
-<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>mPyPl</strong></big></big> (version 0.0.3.7)</font></td
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="mPyPl.html"><font color="#ffffff">mPyPl</font></a>.core</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cwinapp%5Cminiconda3%5Clib%5Csite-packages%5Cmpypl%5C__init__.py">c:\winapp\miniconda3\lib\site-packages\mpypl\__init__.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:d%3A%5Cwinapp%5Canaconda3%5Clib%5Csite-packages%5Cmpypl%5Ccore.py">d:\winapp\anaconda3\lib\site-packages\mpypl\core.py</a></font></td></tr></table>
     <p><tt>#&nbsp;mPyPl&nbsp;-&nbsp;Monadic&nbsp;Pipeline&nbsp;Library&nbsp;for&nbsp;Python<br>
 #&nbsp;<a href="http://github.com/shwars/mPyPl">http://github.com/shwars/mPyPl</a></tt></p>
 <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#aa55cc">
 <td colspan=3 valign=bottom>&nbsp;<br>
-<font color="#ffffff" face="helvetica, arial"><big><strong>Package Contents</strong></big></font></td></tr>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
     
 <tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="mPyPl.core.html">core</a><br>
-<a href="mPyPl.funcs.html">funcs</a><br>
-<a href="mPyPl.jsonstream.html">jsonstream</a><br>
-</td><td width="25%" valign=top><a href="mPyPl.keras.html">keras</a><br>
-<a href="mPyPl.mdict.html">mdict</a><br>
-<a href="mPyPl.multiclass_datastream.html">multiclass_datastream</a><br>
-</td><td width="25%" valign=top><a href="mPyPl.sink.html">sink</a><br>
-<a href="mPyPl.utils.html"><strong>utils</strong>&nbsp;(package)</a><br>
-<a href="mPyPl.video.html">video</a><br>
-</td><td width="25%" valign=top><a href="mPyPl.xmlstream.html">xmlstream</a><br>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="builtins.html">builtins</a><br>
+<a href="cv2.cv2.html">cv2.cv2</a><br>
+<a href="enum.html">enum</a><br>
+<a href="functools.html">functools</a><br>
+</td><td width="25%" valign=top><a href="itertools.html">itertools</a><br>
+<a href="json.html">json</a><br>
+<a href="math.html">math</a><br>
+<a href="numpy.html">numpy</a><br>
+</td><td width="25%" valign=top><a href="os.html">os</a><br>
+<a href="pickle.html">pickle</a><br>
+<a href="random.html">random</a><br>
+<a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top><a href="types.html">types</a><br>
 </td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#eeaa77">
@@ -35,7 +38,8 @@
 <font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
     
 <tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><dl><dt><a name="-isdir"><strong>isdir</strong></a> = _isdir(path, /)</dt><dd><tt>Return&nbsp;true&nbsp;if&nbsp;the&nbsp;pathname&nbsp;refers&nbsp;to&nbsp;an&nbsp;existing&nbsp;directory.</tt></dd></dl>
+<td width="100%"><dl><dt><a name="-infinite"><strong>infinite</strong></a>()</dt><dd><tt>Produce&nbsp;an&nbsp;infinite&nbsp;sequence&nbsp;of&nbsp;empty&nbsp;`mdict`s</tt></dd></dl>
+ <dl><dt><a name="-isdir"><strong>isdir</strong></a> = _isdir(path, /)</dt><dd><tt>Return&nbsp;true&nbsp;if&nbsp;the&nbsp;pathname&nbsp;refers&nbsp;to&nbsp;an&nbsp;existing&nbsp;directory.</tt></dd></dl>
 </td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#eeaa77">
@@ -63,12 +67,6 @@ with&nbsp;this&nbsp;parameter.</tt></dd></dl>
 :param&nbsp;file_ext:&nbsp;file&nbsp;extension&nbsp;to&nbsp;use&nbsp;(dst_field+'.npy')&nbsp;by&nbsp;default<br>
 :return:&nbsp;processed&nbsp;file&nbsp;stream</tt></dd></dl>
  <dl><dt><a name="-apply_nx"><strong>apply_nx</strong></a>(datastream, src_field, dst_field, func, eval_strategy=None, print_exceptions=False)</dt><dd><tt>Same&nbsp;as&nbsp;`apply`,&nbsp;but&nbsp;ignores&nbsp;exceptions&nbsp;by&nbsp;just&nbsp;skipping&nbsp;elements&nbsp;with&nbsp;errors.</tt></dd></dl>
- <dl><dt><a name="-as_batch"><strong>as_batch</strong></a>(flow, feature_field_name='features', label_field_name='label', batchsize=16)</dt><dd><tt>Split&nbsp;input&nbsp;datastream&nbsp;into&nbsp;a&nbsp;sequence&nbsp;of&nbsp;batches&nbsp;suitable&nbsp;for&nbsp;keras&nbsp;training.<br>
-:param&nbsp;flow:&nbsp;input&nbsp;datastream<br>
-:param&nbsp;feature_field_name:&nbsp;feature&nbsp;field&nbsp;name&nbsp;to&nbsp;use.&nbsp;can&nbsp;be&nbsp;string&nbsp;or&nbsp;list&nbsp;of&nbsp;strings&nbsp;(for&nbsp;multiple&nbsp;arguments).&nbsp;Defaults&nbsp;to&nbsp;`features`<br>
-:param&nbsp;label_field_name:&nbsp;Label&nbsp;field&nbsp;name.&nbsp;Defaults&nbsp;to&nbsp;`label`<br>
-:param&nbsp;batchsize:&nbsp;batch&nbsp;size.&nbsp;Defaults&nbsp;to&nbsp;16.<br>
-:return:&nbsp;sequence&nbsp;of&nbsp;batches&nbsp;that&nbsp;can&nbsp;be&nbsp;passed&nbsp;to&nbsp;`flow_generator`&nbsp;or&nbsp;similar&nbsp;function&nbsp;in&nbsp;keras</tt></dd></dl>
  <dl><dt><a name="-as_dict"><strong>as_dict</strong></a>(iterable)</dt></dl>
  <dl><dt><a name="-as_field"><strong>as_field</strong></a>(datastream, field_name)</dt><dd><tt>Convert&nbsp;stream&nbsp;of&nbsp;any&nbsp;objects&nbsp;into&nbsp;proper&nbsp;datastream&nbsp;of&nbsp;`mdict`'s,&nbsp;with&nbsp;one&nbsp;named&nbsp;field</tt></dd></dl>
  <dl><dt><a name="-as_list"><strong>as_list</strong></a>(iterable)</dt></dl>
@@ -105,48 +103,21 @@ iterable,&nbsp;until&nbsp;all&nbsp;of&nbsp;the&nbsp;iterables&nbsp;are&nbsp;exha
 
 <dl><dt><a name="chain-__iter__"><strong>__iter__</strong></a>(self, /)</dt><dd><tt>Implement&nbsp;iter(self).</tt></dd></dl>
 
+<dl><dt><a name="chain-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
 <dl><dt><a name="chain-__next__"><strong>__next__</strong></a>(self, /)</dt><dd><tt>Implement&nbsp;next(self).</tt></dd></dl>
 
 <dl><dt><a name="chain-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Return&nbsp;state&nbsp;information&nbsp;for&nbsp;pickling.</tt></dd></dl>
 
 <dl><dt><a name="chain-__setstate__"><strong>__setstate__</strong></a>(...)</dt><dd><tt>Set&nbsp;state&nbsp;information&nbsp;for&nbsp;unpickling.</tt></dd></dl>
 
-<hr>
-Class methods defined here:<br>
 <dl><dt><a name="chain-from_iterable"><strong>from_iterable</strong></a>(...)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>chain.<a href="#chain_with-from_iterable">from_iterable</a>(iterable)&nbsp;--&gt;&nbsp;chain&nbsp;object<br>
 &nbsp;<br>
 Alternate&nbsp;chain()&nbsp;constructor&nbsp;taking&nbsp;a&nbsp;single&nbsp;iterable&nbsp;argument<br>
 that&nbsp;evaluates&nbsp;lazily.</tt></dd></dl>
 
-<hr>
-Static methods defined here:<br>
-<dl><dt><a name="chain-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
-
-</td></tr></table> <dl><dt><a name="-chunk_slide"><strong>chunk_slide</strong></a>(datastream, chunk_size)</dt></dl>
- <dl><dt><a name="-collect_video"><strong>collect_video</strong></a>(datastream, filename, video_size=None, codec=1935959654)</dt><dd><tt>Collect&nbsp;a&nbsp;video&nbsp;file&nbsp;from&nbsp;a&nbsp;sequence&nbsp;of&nbsp;frames&nbsp;of&nbsp;video&nbsp;fragments.<br>
-:param&nbsp;datastream:&nbsp;sequence&nbsp;of&nbsp;images&nbsp;or&nbsp;video&nbsp;fragments<br>
-:param&nbsp;filename:&nbsp;output&nbsp;file&nbsp;name<br>
-:param&nbsp;video_size:&nbsp;size&nbsp;of&nbsp;the&nbsp;video.&nbsp;If&nbsp;`None`&nbsp;(which&nbsp;is&nbsp;the&nbsp;default)&nbsp;-&nbsp;video&nbsp;size&nbsp;is&nbsp;determined&nbsp;from&nbsp;the&nbsp;dimensions&nbsp;of&nbsp;the&nbsp;input&nbsp;`np.array`<br>
-:param&nbsp;codec:&nbsp;OpenCV&nbsp;codec&nbsp;to&nbsp;use.&nbsp;Default&nbsp;is&nbsp;`cv2.VideoWriter_fourcc(*"ffds")`</tt></dd></dl>
- <dl><dt><a name="-concat"><strong>concat</strong></a>(iterable, separator=', ')</dt></dl>
+</td></tr></table> <dl><dt><a name="-concat"><strong>concat</strong></a>(iterable, separator=', ')</dt></dl>
  <dl><dt><a name="-count"><strong>count</strong></a>(iterable)</dt><dd><tt>Count&nbsp;the&nbsp;size&nbsp;of&nbsp;the&nbsp;given&nbsp;iterable,&nbsp;walking&nbsp;thrue&nbsp;it.</tt></dd></dl>
- <dl><dt><a name="-count_classes"><strong>count_classes</strong></a>(datastream, class_field_name)</dt><dd><tt>Count&nbsp;number&nbsp;of&nbsp;elements&nbsp;in&nbsp;difference&nbsp;classes.<br>
-:param&nbsp;datastream:&nbsp;input&nbsp;data&nbsp;stream<br>
-:param&nbsp;class_field_name:&nbsp;name&nbsp;of&nbsp;the&nbsp;field&nbsp;to&nbsp;be&nbsp;used&nbsp;for&nbsp;counting<br>
-:return:&nbsp;mdict&nbsp;with&nbsp;classes&nbsp;and&nbsp;their&nbsp;values</tt></dd></dl>
- <dl><dt><a name="-datasplit"><strong>datasplit</strong></a>(datastream, split_param=None, split_value=0.2)</dt><dd><tt>Very&nbsp;flexible&nbsp;function&nbsp;for&nbsp;splitting&nbsp;the&nbsp;dataset&nbsp;into&nbsp;train-test&nbsp;or&nbsp;train-test-validation&nbsp;dataset.&nbsp;If&nbsp;datastream<br>
-contains&nbsp;field&nbsp;`filename`&nbsp;-&nbsp;all&nbsp;splitting&nbsp;is&nbsp;performed&nbsp;based&nbsp;on&nbsp;the&nbsp;filename&nbsp;(directories&nbsp;are&nbsp;ommited&nbsp;to&nbsp;simplify<br>
-moving&nbsp;data&nbsp;and&nbsp;split&nbsp;file&nbsp;onto&nbsp;different&nbsp;path).&nbsp;If&nbsp;not&nbsp;-&nbsp;original&nbsp;objects&nbsp;are&nbsp;used.<br>
-:param&nbsp;datastream:&nbsp;datastream&nbsp;to&nbsp;split<br>
-:param&nbsp;split_param:&nbsp;either&nbsp;filename&nbsp;of&nbsp;'split.txt'&nbsp;file,&nbsp;or&nbsp;dictionary&nbsp;of&nbsp;filenames.&nbsp;If&nbsp;the&nbsp;file&nbsp;does&nbsp;not&nbsp;exist&nbsp;-&nbsp;stratified&nbsp;split&nbsp;is&nbsp;performed,&nbsp;and&nbsp;file&nbsp;is&nbsp;created.&nbsp;If&nbsp;`split_param`&nbsp;is&nbsp;None,&nbsp;temporary&nbsp;split&nbsp;is&nbsp;performed.<br>
-:param&nbsp;split_value:&nbsp;either&nbsp;one&nbsp;value&nbsp;(default&nbsp;is&nbsp;0.2),&nbsp;in&nbsp;which&nbsp;case&nbsp;train-test&nbsp;split&nbsp;is&nbsp;performed,&nbsp;or&nbsp;pair&nbsp;of&nbsp;`(validation,test)`&nbsp;values<br>
-:return:&nbsp;datastream&nbsp;with&nbsp;additional&nbsp;field&nbsp;`split`</tt></dd></dl>
- <dl><dt><a name="-datasplit_by_pattern"><strong>datasplit_by_pattern</strong></a>(datastream, train_pattern=None, valid_pattern=None, test_pattern=None)</dt><dd><tt>Attach&nbsp;data&nbsp;split&nbsp;info&nbsp;to&nbsp;the&nbsp;stream&nbsp;according&nbsp;to&nbsp;some&nbsp;pattern&nbsp;in&nbsp;filename.<br>
-:param&nbsp;datastream:&nbsp;Datastream,&nbsp;which&nbsp;should&nbsp;contain&nbsp;the&nbsp;field&nbsp;'filename',&nbsp;or&nbsp;be&nbsp;string&nbsp;stream<br>
-:param&nbsp;train_pattern:&nbsp;Train&nbsp;pattern&nbsp;to&nbsp;use.&nbsp;If&nbsp;None,&nbsp;all&nbsp;are&nbsp;considered&nbsp;Train&nbsp;by&nbsp;default<br>
-:param&nbsp;valid_pattern:&nbsp;Validation&nbsp;pattern&nbsp;to&nbsp;use.&nbsp;If&nbsp;None,&nbsp;there&nbsp;will&nbsp;be&nbsp;no&nbsp;validation.<br>
-:param&nbsp;test_pattern:&nbsp;Test&nbsp;pattern&nbsp;to&nbsp;use.&nbsp;If&nbsp;None,&nbsp;there&nbsp;will&nbsp;be&nbsp;no&nbsp;validation.<br>
-:return:&nbsp;Datastream&nbsp;augmented&nbsp;with&nbsp;`split`&nbsp;field</tt></dd></dl>
  <dl><dt><a name="-dedup"><strong>dedup</strong></a>(iterable)</dt><dd><tt>Only&nbsp;yield&nbsp;unique&nbsp;items.&nbsp;Use&nbsp;a&nbsp;set&nbsp;to&nbsp;keep&nbsp;track&nbsp;of&nbsp;duplicate&nbsp;data.</tt></dd></dl>
  <dl><dt><a name="-delay"><strong>delay</strong></a>(seq, field_name, delayed_field_name)</dt><dd><tt>Create&nbsp;another&nbsp;field&nbsp;`delayed_field_name`&nbsp;from&nbsp;`field_name`&nbsp;that&nbsp;is&nbsp;one&nbsp;step&nbsp;delayed<br>
 :param&nbsp;seq:&nbsp;Sequence<br>
@@ -180,12 +151,7 @@ operating&nbsp;on&nbsp;internals&nbsp;of&nbsp;`dict`</tt></dd></dl>
 :param&nbsp;pred:&nbsp;predicate&nbsp;function.&nbsp;If&nbsp;`src_field`&nbsp;is&nbsp;one&nbsp;field,&nbsp;than&nbsp;`pred`&nbsp;is&nbsp;a&nbsp;function&nbsp;of&nbsp;one&nbsp;argument&nbsp;returning&nbsp;boolean.<br>
 If&nbsp;`src_field`&nbsp;is&nbsp;a&nbsp;list,&nbsp;`pred`&nbsp;takes&nbsp;tuple/list&nbsp;as&nbsp;an&nbsp;argument.<br>
 :return:&nbsp;datastream&nbsp;with&nbsp;fields&nbsp;that&nbsp;yield&nbsp;predicate</tt></dd></dl>
- <dl><dt><a name="-filter_split"><strong>filter_split</strong></a>(datastream, split_type)</dt><dd><tt>Returns&nbsp;a&nbsp;datastream&nbsp;of&nbsp;the&nbsp;corresponding&nbsp;split&nbsp;type<br>
-:param&nbsp;datastream:&nbsp;Input&nbsp;datastream<br>
-:return:&nbsp;Tuple&nbsp;of&nbsp;the&nbsp;form&nbsp;`(train_stream,test_stream)`</tt></dd></dl>
- <dl><dt><a name="-first"><strong>first</strong></a>(l)</dt><dd><tt>Returns&nbsp;first&nbsp;element&nbsp;of&nbsp;a&nbsp;pipe<br>
-:param&nbsp;datastream:&nbsp;input&nbsp;pipe&nbsp;generator<br>
-:return:&nbsp;first&nbsp;element</tt></dd></dl>
+ <dl><dt><a name="-first"><strong>first</strong></a>(iterable)</dt></dl>
  <dl><dt><a name="-fold"><strong>fold</strong></a>(l, field_name, func, init_state)</dt><dd><tt>Perform&nbsp;fold&nbsp;of&nbsp;the&nbsp;datastream,&nbsp;using&nbsp;given&nbsp;fold&nbsp;function&nbsp;`func`&nbsp;with&nbsp;initial&nbsp;state&nbsp;`init_state`<br>
 :param&nbsp;l:&nbsp;datastream<br>
 :param&nbsp;field_name:&nbsp;field&nbsp;name&nbsp;(or&nbsp;list&nbsp;of&nbsp;names)&nbsp;to&nbsp;use<br>
@@ -222,15 +188,13 @@ but&nbsp;returns&nbsp;an&nbsp;iterator.<br>&nbsp;</tt></td></tr>
 
 <dl><dt><a name="islice-__iter__"><strong>__iter__</strong></a>(self, /)</dt><dd><tt>Implement&nbsp;iter(self).</tt></dd></dl>
 
+<dl><dt><a name="islice-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
 <dl><dt><a name="islice-__next__"><strong>__next__</strong></a>(self, /)</dt><dd><tt>Implement&nbsp;next(self).</tt></dd></dl>
 
 <dl><dt><a name="islice-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Return&nbsp;state&nbsp;information&nbsp;for&nbsp;pickling.</tt></dd></dl>
 
 <dl><dt><a name="islice-__setstate__"><strong>__setstate__</strong></a>(...)</dt><dd><tt>Set&nbsp;state&nbsp;information&nbsp;for&nbsp;unpickling.</tt></dd></dl>
-
-<hr>
-Static methods defined here:<br>
-<dl><dt><a name="islice-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
 
 </td></tr></table> <dl><dt><a name="-iter"><strong>iter</strong></a>(datastream, field_name=None, func=None)</dt><dd><tt>Execute&nbsp;function&nbsp;`func`&nbsp;on&nbsp;field&nbsp;`field_name`&nbsp;(or&nbsp;list&nbsp;of&nbsp;fields)&nbsp;of&nbsp;every&nbsp;item.<br>
 If&nbsp;`field_name`&nbsp;is&nbsp;omitted&nbsp;or&nbsp;`None`,&nbsp;function&nbsp;is&nbsp;applied&nbsp;on&nbsp;the&nbsp;whole&nbsp;dictionary&nbsp;(this&nbsp;usage&nbsp;is&nbsp;not&nbsp;recommended).</tt></dd></dl>
@@ -256,13 +220,11 @@ is&nbsp;exhausted&nbsp;and&nbsp;then&nbsp;it&nbsp;raises&nbsp;StopIteration.<br>
 
 <dl><dt><a name="zip-__iter__"><strong>__iter__</strong></a>(self, /)</dt><dd><tt>Implement&nbsp;iter(self).</tt></dd></dl>
 
+<dl><dt><a name="zip-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
 <dl><dt><a name="zip-__next__"><strong>__next__</strong></a>(self, /)</dt><dd><tt>Implement&nbsp;next(self).</tt></dd></dl>
 
 <dl><dt><a name="zip-__reduce__"><strong>__reduce__</strong></a>(...)</dt><dd><tt>Return&nbsp;state&nbsp;information&nbsp;for&nbsp;pickling.</tt></dd></dl>
-
-<hr>
-Static methods defined here:<br>
-<dl><dt><a name="zip-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
 
 </td></tr></table> <dl><dt><a name="-lineout"><strong>lineout</strong></a>(x)</dt></dl>
  <dl><dt><a name="-lstrip"><strong>lstrip</strong></a>(iterable, chars=None)</dt></dl>
@@ -270,30 +232,10 @@ Static methods defined here:<br>
 You&nbsp;need&nbsp;to&nbsp;make&nbsp;sure&nbsp;that&nbsp;`lzapply`&nbsp;does&nbsp;not&nbsp;create&nbsp;endless&nbsp;recursive&nbsp;loop&nbsp;-&nbsp;you&nbsp;should&nbsp;not&nbsp;use&nbsp;the&nbsp;same<br>
 `src_field`&nbsp;and&nbsp;`dst_field`,&nbsp;and&nbsp;avoid&nbsp;situations&nbsp;when&nbsp;x['f1']&nbsp;lazily&nbsp;depends&nbsp;on&nbsp;x['f2'],&nbsp;while&nbsp;x['f2']&nbsp;lazily<br>
 depends&nbsp;on&nbsp;x['f1'].</tt></dd></dl>
- <dl><dt><a name="-make_train_test_split"><strong>make_train_test_split</strong></a>(datastream)</dt><dd><tt>Returns&nbsp;a&nbsp;tuple&nbsp;of&nbsp;streams&nbsp;with&nbsp;train&nbsp;and&nbsp;test&nbsp;dataset.&nbsp;It&nbsp;can&nbsp;be&nbsp;used&nbsp;in&nbsp;the&nbsp;following&nbsp;manner:<br>
-`train,&nbsp;test&nbsp;=&nbsp;get_datastream(..)&nbsp;|&nbsp;...&nbsp;|&nbsp;make_train_test_split()`<br>
-**Important**:&nbsp;this&nbsp;causes&nbsp;the&nbsp;whole&nbsp;dataset&nbsp;to&nbsp;be&nbsp;loaded&nbsp;into&nbsp;memory.&nbsp;If&nbsp;objects&nbsp;are&nbsp;large,&nbsp;you&nbsp;are&nbsp;encouraged<br>
-to&nbsp;use&nbsp;lazy&nbsp;field&nbsp;evaluation,&nbsp;or&nbsp;to&nbsp;handle&nbsp;it&nbsp;using&nbsp;the&nbsp;following&nbsp;way:<br>
-```<br>
-train&nbsp;=&nbsp;get_datastream('...')&nbsp;|&nbsp;...&nbsp;|&nbsp;filter_split(SplitType.Train)<br>
-test&nbsp;=&nbsp;get_datastream('...')&nbsp;|&nbsp;...&nbsp;|&nbsp;filter_split(SplitType.Test)<br>
-```<br>
-:param&nbsp;datastream:&nbsp;Input&nbsp;datastream<br>
-:return:&nbsp;Tuple&nbsp;of&nbsp;the&nbsp;form&nbsp;`(train_stream,test_stream)`</tt></dd></dl>
- <dl><dt><a name="-make_train_validation_test_split"><strong>make_train_validation_test_split</strong></a>(datastream)</dt><dd><tt>Returns&nbsp;a&nbsp;tuple&nbsp;of&nbsp;streams&nbsp;with&nbsp;train,&nbsp;validation&nbsp;and&nbsp;test&nbsp;dataset.&nbsp;See&nbsp;`make_train_test_split`&nbsp;documentation&nbsp;for<br>
-limitations&nbsp;and&nbsp;usage&nbsp;suggestions.<br>
-:param&nbsp;datastream:&nbsp;Input&nbsp;datastream<br>
-:return:&nbsp;Tuple&nbsp;of&nbsp;the&nbsp;form&nbsp;`(train_stream,validation_stream,test_stream)`</tt></dd></dl>
  <dl><dt><a name="-max"><strong>max</strong></a>(iterable, **kwargs)</dt></dl>
  <dl><dt><a name="-min"><strong>min</strong></a>(iterable, **kwargs)</dt></dl>
  <dl><dt><a name="-netcat"><strong>netcat</strong></a>(to_send, host, port)</dt></dl>
  <dl><dt><a name="-netwrite"><strong>netwrite</strong></a>(to_send, host, port)</dt></dl>
- <dl><dt><a name="-normalize_npy_value"><strong>normalize_npy_value</strong></a>(seq, field_name, interval=(0, 1))</dt><dd><tt>Normalize&nbsp;values&nbsp;of&nbsp;the&nbsp;field&nbsp;specified&nbsp;by&nbsp;`field_name`&nbsp;in&nbsp;the&nbsp;given&nbsp;`interval`<br>
-Normalization&nbsp;is&nbsp;applied&nbsp;invividually&nbsp;to&nbsp;each&nbsp;sequence&nbsp;element<br>
-:param&nbsp;seq:&nbsp;Input&nbsp;datastream<br>
-:param&nbsp;field_name:&nbsp;Field&nbsp;name<br>
-:param&nbsp;interval:&nbsp;Interval&nbsp;(default&nbsp;to&nbsp;(0,1))<br>
-:return:&nbsp;Datastream&nbsp;with&nbsp;a&nbsp;field&nbsp;normalized</tt></dd></dl>
  <dl><dt><a name="-passed"><strong>passed</strong></a>(x)</dt></dl>
  <dl><dt><a name="-pbatch"><strong>pbatch</strong></a>(l, n=10)</dt><dd><tt>Split&nbsp;input&nbsp;sequence&nbsp;into&nbsp;batches&nbsp;of&nbsp;`n`&nbsp;elements.<br>
 :param&nbsp;l:&nbsp;Input&nbsp;sequence<br>
@@ -328,14 +270,6 @@ like&nbsp;[2,1,3,2,1,3,...]),&nbsp;if&nbsp;you&nbsp;want&nbsp;proper&nbsp;infini
  <dl><dt><a name="-reverse"><strong>reverse</strong></a>(iterable)</dt></dl>
  <dl><dt><a name="-rstrip"><strong>rstrip</strong></a>(iterable, chars=None)</dt></dl>
  <dl><dt><a name="-run_with"><strong>run_with</strong></a>(iterable, func)</dt></dl>
- <dl><dt><a name="-sample_classes"><strong>sample_classes</strong></a>(datastream, class_field_name, n=10, classes=None)</dt><dd><tt>Create&nbsp;a&nbsp;datastream&nbsp;containing&nbsp;at&nbsp;most&nbsp;`n`&nbsp;samples&nbsp;from&nbsp;each&nbsp;of&nbsp;the&nbsp;classes&nbsp;defined&nbsp;by&nbsp;`class_field_name`<br>
-**Important**&nbsp;If&nbsp;`classes`&nbsp;is&nbsp;`None`,&nbsp;function&nbsp;determines&nbsp;classes&nbsp;on&nbsp;the&nbsp;fly,&nbsp;in&nbsp;which&nbsp;case&nbsp;it&nbsp;is&nbsp;possible&nbsp;that&nbsp;it&nbsp;will&nbsp;terminate&nbsp;early&nbsp;without<br>
-giving&nbsp;elements&nbsp;of&nbsp;all&nbsp;classes.<br>
-:param&nbsp;datastream:&nbsp;input&nbsp;stream<br>
-:param&nbsp;class_field_name:&nbsp;name&nbsp;of&nbsp;the&nbsp;field&nbsp;in&nbsp;the&nbsp;stream&nbsp;speficying&nbsp;the&nbsp;class<br>
-:param&nbsp;n:&nbsp;number&nbsp;of&nbsp;elements&nbsp;of&nbsp;each&nbsp;class&nbsp;to&nbsp;take<br>
-:param&nbsp;classes:&nbsp;classes&nbsp;descriptor,&nbsp;either&nbsp;dictionary&nbsp;or&nbsp;list<br>
-:return:&nbsp;resulting&nbsp;stream</tt></dd></dl>
  <dl><dt><a name="-sapply"><strong>sapply</strong></a>(datastream, field, func)</dt><dd><tt>Self-apply<br>
 Applies&nbsp;a&nbsp;function&nbsp;to&nbsp;the&nbsp;specified&nbsp;field&nbsp;of&nbsp;the&nbsp;stream&nbsp;and&nbsp;stores&nbsp;the&nbsp;result&nbsp;in&nbsp;the&nbsp;same&nbsp;field.&nbsp;Sample&nbsp;usage:<br>
 `[1,2,3]&nbsp;|&nbsp;as_field('x')&nbsp;|&nbsp;sapply('x',lambda&nbsp;x:&nbsp;x*x)&nbsp;|&nbsp;select_field('x')&nbsp;|&nbsp;as_list`</tt></dd></dl>
@@ -354,11 +288,6 @@ If&nbsp;several&nbsp;fields&nbsp;are&nbsp;given,&nbsp;return&nbsp;a&nbsp;list/tu
  <dl><dt><a name="-select_fields"><strong>select_fields</strong></a>(datastream, field_names)</dt><dd><tt>Select&nbsp;multiple&nbsp;fields&nbsp;from&nbsp;datastream,&nbsp;returning&nbsp;a&nbsp;*new*&nbsp;stream&nbsp;of&nbsp;*mdicts*&nbsp;with&nbsp;the&nbsp;requested&nbsp;fields&nbsp;copied.<br>
 Because&nbsp;field&nbsp;immutability&nbsp;is&nbsp;encouraged,&nbsp;the&nbsp;best&nbsp;way&nbsp;to&nbsp;get&nbsp;rid&nbsp;of&nbsp;some&nbsp;fields&nbsp;and&nbsp;free&nbsp;up&nbsp;memory<br>
 is&nbsp;to&nbsp;select&nbsp;out&nbsp;a&nbsp;new&nbsp;data&nbsp;structure&nbsp;with&nbsp;the&nbsp;ones&nbsp;you&nbsp;want&nbsp;copied&nbsp;over.</tt></dd></dl>
- <dl><dt><a name="-set_eval_strategy"><strong>set_eval_strategy</strong></a>(datastream, field_name, evs)</dt><dd><tt>Set&nbsp;evaluation&nbsp;strategy&nbsp;of&nbsp;a&nbsp;speficied&nbsp;field<br>
-:param&nbsp;datastream:&nbsp;Datastream<br>
-:param&nbsp;field_name:&nbsp;Name&nbsp;of&nbsp;field&nbsp;or&nbsp;fields&nbsp;(str&nbsp;or&nbsp;list)<br>
-:param&nbsp;evs:&nbsp;Desired&nbsp;evaluation&nbsp;strategy<br>
-:return:&nbsp;Datastream</tt></dd></dl>
  <dl><dt><a name="-silly_progress"><strong>silly_progress</strong></a>(seq, n=None, elements=None, symbol='.', width=40)</dt><dd><tt>Print&nbsp;dots&nbsp;to&nbsp;indicate&nbsp;that&nbsp;something&nbsp;good&nbsp;is&nbsp;happening.&nbsp;A&nbsp;dot&nbsp;is&nbsp;printed&nbsp;every&nbsp;`n`&nbsp;items.<br>
 :param&nbsp;seq:&nbsp;original&nbsp;sequence<br>
 :param&nbsp;n:&nbsp;number&nbsp;of&nbsp;items&nbsp;to&nbsp;process&nbsp;between&nbsp;printing&nbsp;a&nbsp;dot<br>
@@ -374,23 +303,6 @@ is&nbsp;to&nbsp;select&nbsp;out&nbsp;a&nbsp;new&nbsp;data&nbsp;structure&nbsp;wi
 :return:&nbsp;mPyPl&nbsp;sequence&nbsp;containing&nbsp;numpy&nbsp;arrays&nbsp;for&nbsp;specified&nbsp;fields</tt></dd></dl>
  <dl><dt><a name="-sort"><strong>sort</strong></a>(iterable, **kwargs)</dt></dl>
  <dl><dt><a name="-stdout"><strong>stdout</strong></a>(x)</dt></dl>
- <dl><dt><a name="-stratify_sample"><strong>stratify_sample</strong></a>(seq, n=None, shuffle=False, field_name='class_id')</dt><dd><tt>Returns&nbsp;stratified&nbsp;samples&nbsp;of&nbsp;size&nbsp;`n`&nbsp;from&nbsp;each&nbsp;class&nbsp;(given&nbsp;dy&nbsp;`field_name`)&nbsp;in&nbsp;round&nbsp;robin&nbsp;manner.<br>
-NB:&nbsp;This&nbsp;operation&nbsp;is&nbsp;cachy&nbsp;(caches&nbsp;all&nbsp;data&nbsp;in&nbsp;memory)<br>
-:param&nbsp;l:&nbsp;input&nbsp;pipe&nbsp;generator<br>
-:param&nbsp;n:&nbsp;number&nbsp;of&nbsp;samples&nbsp;or&nbsp;`None`&nbsp;(in&nbsp;which&nbsp;case&nbsp;the&nbsp;min&nbsp;number&nbsp;of&nbsp;elements&nbsp;is&nbsp;used)<br>
-:param&nbsp;shuffle:&nbsp;perform&nbsp;random&nbsp;shuffling&nbsp;of&nbsp;samples<br>
-:param&nbsp;field_name:&nbsp;name&nbsp;of&nbsp;field&nbsp;that&nbsp;specifies&nbsp;classes.&nbsp;`class_no`&nbsp;by&nbsp;default.<br>
-:return:&nbsp;result&nbsp;sequence</tt></dd></dl>
- <dl><dt><a name="-stratify_sample_tt"><strong>stratify_sample_tt</strong></a>(seq, n_samples=None, shuffle=False, class_field_name='class_id', split_field_name='split')</dt><dd><tt>Returns&nbsp;stratified&nbsp;training,&nbsp;test&nbsp;and&nbsp;validation&nbsp;samples&nbsp;of&nbsp;size&nbsp;`n_sample`&nbsp;from&nbsp;each&nbsp;class<br>
-(given&nbsp;dy&nbsp;`class_field_name`)&nbsp;in&nbsp;round&nbsp;robin&nbsp;manner.<br>
-`n_samples`&nbsp;is&nbsp;a&nbsp;dict&nbsp;specifying&nbsp;number&nbsp;of&nbsp;samples&nbsp;for&nbsp;each&nbsp;split&nbsp;type&nbsp;(or&nbsp;None).<br>
-NB:&nbsp;This&nbsp;operation&nbsp;is&nbsp;cachy&nbsp;(caches&nbsp;all&nbsp;data&nbsp;in&nbsp;memory)<br>
-:param&nbsp;l:&nbsp;input&nbsp;pipe&nbsp;generator<br>
-:param&nbsp;n_samples:&nbsp;dict&nbsp;specifying&nbsp;number&nbsp;of&nbsp;samples&nbsp;for&nbsp;each&nbsp;split&nbsp;type&nbsp;or&nbsp;`None`&nbsp;(in&nbsp;which&nbsp;case&nbsp;the&nbsp;min&nbsp;number&nbsp;of&nbsp;elements&nbsp;is&nbsp;used)<br>
-:param&nbsp;shuffle:&nbsp;perform&nbsp;random&nbsp;shuffling&nbsp;of&nbsp;samples<br>
-:param&nbsp;class_field_name:&nbsp;name&nbsp;of&nbsp;field&nbsp;that&nbsp;specifies&nbsp;classes.&nbsp;`class_id`&nbsp;by&nbsp;default.<br>
-:param&nbsp;split_field_name:&nbsp;name&nbsp;of&nbsp;field&nbsp;that&nbsp;specifies&nbsp;split.&nbsp;`split`&nbsp;by&nbsp;default.<br>
-:return:&nbsp;result&nbsp;sequence</tt></dd></dl>
  <dl><dt><a name="-strip"><strong>strip</strong></a>(iterable, chars=None)</dt></dl>
  <dl><dt><a name="-summarize"><strong>summarize</strong></a>(seq, field_name, func=None, msg=None)</dt><dd><tt>Compute&nbsp;a&nbsp;summary&nbsp;of&nbsp;a&nbsp;given&nbsp;field&nbsp;(eg.&nbsp;count&nbsp;of&nbsp;different&nbsp;values).&nbsp;Resulting&nbsp;dictionary&nbsp;is&nbsp;either&nbsp;passed&nbsp;to&nbsp;`func`,<br>
 or&nbsp;printed&nbsp;on&nbsp;screen&nbsp;(if&nbsp;`func&nbsp;is&nbsp;None`).<br>
@@ -398,11 +310,6 @@ or&nbsp;printed&nbsp;on&nbsp;screen&nbsp;(if&nbsp;`func&nbsp;is&nbsp;None`).<br>
 :param&nbsp;field_name:&nbsp;Field&nbsp;name&nbsp;to&nbsp;summarize<br>
 :param&nbsp;func:&nbsp;Function&nbsp;to&nbsp;call&nbsp;after&nbsp;summary&nbsp;is&nbsp;obtained&nbsp;(which&nbsp;is&nbsp;after&nbsp;all&nbsp;stream&nbsp;processing).&nbsp;If&nbsp;`None`,&nbsp;summary&nbsp;is&nbsp;printed&nbsp;on&nbsp;screen.<br>
 :param&nbsp;msg:&nbsp;Optional&nbsp;message&nbsp;to&nbsp;print&nbsp;before&nbsp;summary<br>
-:return:&nbsp;Original&nbsp;stream</tt></dd></dl>
- <dl><dt><a name="-summary"><strong>summary</strong></a>(seq, class_field_name='class_name', split_field_name='split')</dt><dd><tt>Print&nbsp;a&nbsp;summary&nbsp;of&nbsp;a&nbsp;data&nbsp;stream<br>
-:param&nbsp;seq:&nbsp;Datastream<br>
-:param&nbsp;class_field_name:&nbsp;Field&nbsp;name&nbsp;to&nbsp;differentiate&nbsp;between&nbsp;classes<br>
-:param&nbsp;split_field_name:&nbsp;Field&nbsp;name&nbsp;to&nbsp;indicate&nbsp;train/test&nbsp;split<br>
 :return:&nbsp;Original&nbsp;stream</tt></dd></dl>
  <dl><dt><a name="-t"><strong>t</strong></a>(iterable, y)</dt></dl>
  <dl><dt><a name="-tail"><strong>tail</strong></a>(iterable, qte)</dt><dd><tt>Yield&nbsp;qte&nbsp;of&nbsp;elements&nbsp;in&nbsp;the&nbsp;given&nbsp;iterable.</tt></dd></dl>
@@ -424,8 +331,6 @@ with&nbsp;the&nbsp;actual&nbsp;values&nbsp;inside&nbsp;the&nbsp;sequence.&nbsp;A
 :param&nbsp;datasteam:&nbsp;Data&nbsp;stream<br>
 :param&nbsp;field:&nbsp;Field&nbsp;name&nbsp;or&nbsp;list&nbsp;of&nbsp;field&nbsp;names.&nbsp;If&nbsp;several&nbsp;fields&nbsp;are&nbsp;listed,&nbsp;corresponding&nbsp;sequences&nbsp;should&nbsp;preferably&nbsp;be&nbsp;of&nbsp;the&nbsp;same&nbsp;size.</tt></dd></dl>
  <dl><dt><a name="-where"><strong>where</strong></a>(iterable, predicate)</dt></dl>
- <dl><dt><a name="-write_csv"><strong>write_csv</strong></a>(l, filename)</dt></dl>
- <dl><dt><a name="-write_json"><strong>write_json</strong></a>(l, filename)</dt></dl>
 </td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#55aa55">
