@@ -21,3 +21,5 @@ echo ==== UTILS ====
 %pydoccmd% -w mPyPl.utils.video
 echo ==== MAIN ====
 %pydoccmd% -w mPyPl
+echo ==== Create index ====
+copy mPyPl.html index.html
