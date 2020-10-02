@@ -25,3 +25,4 @@ Principal developers of mPyPl:
  * [Yana Valieva](https://github.com/vJenny)
  * [Tim Scarfe](https://github.com/ecsplendid)
  
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/shwars/mPyPl/master)
