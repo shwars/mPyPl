@@ -2,6 +2,8 @@
 from .utils.video import *
 from .utils.image import im_resize
 from pipe import Pipe
+from PIL import Image
+from PIL import GifImagePlugin
 
 
 def load_video(video, video_size=(100,100), squarecrop=False, fps=25, maxlength=5, use_cache=False):
@@ -63,7 +65,7 @@ def videosource_chunked(fname,frames_per_chunk=25,video_size=(100,100),mode='rgb
             yield chunk
             i=0
             chunk = np.zeros((frames_per_chunk, video_size[1], video_size[0], 3)) # TODO: Color!
-        success, image = vidcap.read()
+        success, image = vidcap.read()        
 
 @Pipe
 def chunk_slide(datastream, chunk_size):
