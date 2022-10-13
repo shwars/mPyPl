@@ -3,6 +3,17 @@ import random, itertools
 import numpy as np
 import pickle
 
+
+@Pipe
+def as_list(x):
+    """
+    Convert the result of a pipe to a list. This function has been removed from `pipe`
+    library, that's why it is has been re-implemented here.
+    :param x: input pipe
+    :return: list with all elements of a pipe
+    """
+    return list(x)
+
 # trs note -- pass l in as
 # a fixed data structure i.e. array/list because (len(l)) must work
 @Pipe
